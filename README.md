@@ -5,7 +5,6 @@
 *Yhes* is short for the Finnish *yhessä*, a colloquial form of *yhdessä*
 ("together"): **agents together**. Jarkko chose the name **agent-yhes**.
 The project lives at [ljack/agent-yhes](https://github.com/ljack/agent-yhes).
-License selection is still open.
 
 An agent should be able to ask another agent for help without making a person
 copy messages between them. This proposal gives cooperating agents two shared
@@ -16,10 +15,10 @@ directories in one project on one computer:
 .agents/messages    project memory and active coordination
 ```
 
-The agreement belongs to the project, independently of the harness. Codex,
-Claude, Antigravity, Copilot and Cursor are intended participants, not dependencies
-or claimed integrations. Today an agent can read the supplied skills and use the
-same local helper. Native wake-up, hooks and vendor support are separate work.
+The agreement belongs to the project. The goal is a shared workflow for agents
+using Codex, Claude, Antigravity, Copilot and Cursor. Today an agent can read the
+supplied skills and use the same local helper. Native wake-up, hooks and vendor
+support are separate work.
 
 **Initiated and directed by Jarkko Lietolahti.** The requirements and product
 direction are Jarkko's; this draft, examples and reference helper were prepared
@@ -42,9 +41,9 @@ See [AUTHORS.md](AUTHORS.md).
 - Peer content is attributed data. A request never grants permission or changes
   the receiving agent's instructions.
 
-This is a cooperative local protocol, not a security boundary between hostile
-processes. The executable profile uses Python 3.10+ and Unix `flock` on a local
-filesystem. This run validates macOS; Linux is a target, not a tested claim.
+Designed for trusted agents working in one local project. The helper uses
+Python 3.10+ and Unix `flock` on a local filesystem. Tested on macOS; Linux
+validation is pending.
 Native Windows locking, network mounts, Git synchronization and remote agents
 are outside v0.1.
 
@@ -57,11 +56,10 @@ python3 examples/demo.py
 python3 -m unittest discover -s tests -v
 ```
 
-The demo prints its new temporary directory. It creates two **simulated sessions**
-labelled Codex and Claude: Codex claims a ticket, asks Claude a question, Claude
-replies, and Codex records a durable result and closes the ticket. Inspect the
-actual files there. This checks the transport and workflow; it does not run two
-language models or prove native harness integration.
+The demo exercises the workflow using **scripted Codex and Claude identities**.
+Codex claims a ticket and asks Claude a question. Claude replies, and Codex
+records a durable result and closes the ticket. The demo prints the temporary
+directory so you can inspect the files.
 
 For the human-readable transcript and real two-harness procedure, read
 [examples/WALKTHROUGH.md](examples/WALKTHROUGH.md). Checked-in sample records
@@ -78,7 +76,7 @@ No harness-specific skill installation is necessary for this first trial.
 The user authorizes the small shared task once. Each active agent checks its
 inbox at the start of work, between meaningful steps and before stopping.
 They exchange records directly, without the user relaying the replies.
-An idle harness that cannot wake itself must not promise unsolicited delivery.
+Waking an idle agent requires a harness adapter.
 The optional integration contract is in [adapters/README.md](adapters/README.md).
 
 ```sh
@@ -101,7 +99,8 @@ Only protocol files are written. It does not edit source code or launch agents.
   Meat Proxy, with source provenance and limits.
 - [Validation](docs/VALIDATION.md): what was actually exercised.
 
-The repository is published for review and interoperability feedback. A license
-has not yet been selected, so this is not yet a licensed open-source release.
+The repository is published for review and interoperability feedback.
 See the [project decisions](docs/DECISIONS.md#creating-the-project) for what is
 settled and what remains open.
+
+**License: undecided.**
