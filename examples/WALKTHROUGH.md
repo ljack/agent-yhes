@@ -23,7 +23,7 @@ sequenceDiagram
     C->>M: durable decision and result
     C->>M: handled receipt for reply
     C->>T: complete with token, revision, result ID and evidence
-    T-->>C: done; claim cleared; history retained
+    T-->>C: done, claim cleared, history retained
 ```
 
 The sample question is whether an expired claim proves the previous source
