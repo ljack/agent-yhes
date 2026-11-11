@@ -1,0 +1,24 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "message",
+  "id": "m_8767b60a-5f85-4e72-8e80-3db2b5813348",
+  "created_at": "2026-11-11T19:23:26.399876Z",
+  "from": {
+    "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+    "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+  },
+  "to": [
+    {
+      "kind": "agent",
+      "id": "a_8807b788-efa8-4817-bc6d-2bca1ef69a15"
+    }
+  ],
+  "kind": "task_request",
+  "retention": "ephemeral",
+  "expires_at": "2026-11-11T20:23:26.399876Z",
+  "ticket": "t_b21c8357-2dc1-486b-9ef4-b2e5d031dd0e",
+  "reply_to": null,
+  "supersedes": [],
+  "body": "Review the proposed live trial when authorized; handoff m_ef5e29ab-d92b-498e-ae0b-344d40cf6924"
+}

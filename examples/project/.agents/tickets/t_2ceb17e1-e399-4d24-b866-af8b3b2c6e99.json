@@ -1,0 +1,67 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "ticket",
+  "id": "t_2ceb17e1-e399-4d24-b866-af8b3b2c6e99",
+  "revision": 3,
+  "title": "Choose safe stale-claim behavior",
+  "body": "Synthetic trial authorized by the demo runner. Explain safe expiry recovery; do not edit application source.",
+  "created_at": "2026-11-11T19:23:26.391207Z",
+  "updated_at": "2026-11-11T19:23:26.398157Z",
+  "created_by": {
+    "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+    "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+  },
+  "status": "done",
+  "scope": [
+    "docs/recovery.md"
+  ],
+  "depends_on": [],
+  "generation": 1,
+  "lease": null,
+  "history": [
+    {
+      "revision": 1,
+      "at": "2026-11-11T19:23:26.391212Z",
+      "by": {
+        "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+        "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+      },
+      "action": "create",
+      "summary": "Task captured; capture does not grant execution authority.",
+      "messages": []
+    },
+    {
+      "revision": 2,
+      "at": "2026-11-11T19:23:26.391889Z",
+      "by": {
+        "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+        "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+      },
+      "action": "claim",
+      "summary": "Claim acquired; source-file scope overlaps still require coordination.",
+      "messages": []
+    },
+    {
+      "revision": 3,
+      "at": "2026-11-11T19:23:26.398157Z",
+      "by": {
+        "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+        "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+      },
+      "action": "finish:done",
+      "summary": "Documented safe expiry recovery in durable project memory.",
+      "messages": [
+        "m_5962f8fa-0d18-4fdf-81e2-54eb30f7c02a"
+      ]
+    }
+  ],
+  "result": {
+    "summary": "Documented safe expiry recovery in durable project memory.",
+    "evidence": [
+      "Question and correlated reply were observed in separate simulated session inboxes.",
+      "Durable result contains the conclusion independently of the ephemeral reply."
+    ],
+    "memory": "m_5962f8fa-0d18-4fdf-81e2-54eb30f7c02a"
+  }
+}

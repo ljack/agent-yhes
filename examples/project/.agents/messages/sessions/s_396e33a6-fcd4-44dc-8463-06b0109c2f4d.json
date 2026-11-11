@@ -1,0 +1,11 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "session",
+  "id": "s_396e33a6-fcd4-44dc-8463-06b0109c2f4d",
+  "agent": "a_8807b788-efa8-4817-bc6d-2bca1ef69a15",
+  "label": "reviewer (simulated)",
+  "harness": "claude",
+  "started_at": "2026-11-11T19:23:26.390787Z",
+  "resumes": null
+}

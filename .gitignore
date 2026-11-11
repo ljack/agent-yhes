@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+/.tickets/
+/.teerminal-intake-owner
+/.agents/
+/dist/

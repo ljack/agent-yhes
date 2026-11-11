@@ -1,0 +1,23 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "message",
+  "id": "m_ed8182d1-fd14-4678-91ac-3998638399ec",
+  "created_at": "2026-11-11T19:23:26.392562Z",
+  "from": {
+    "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+    "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+  },
+  "to": [
+    {
+      "kind": "project"
+    }
+  ],
+  "kind": "intent",
+  "retention": "ephemeral",
+  "expires_at": "2026-11-11T19:38:26.392562Z",
+  "ticket": "t_2ceb17e1-e399-4d24-b866-af8b3b2c6e99",
+  "reply_to": null,
+  "supersedes": [],
+  "body": "Reviewing the planned docs/recovery.md scope for this ticket. This synthetic run writes only protocol records; no source editing is underway."
+}

@@ -1,0 +1,23 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "message",
+  "id": "m_a11a7c02-4665-48ea-b88a-de9a32003290",
+  "created_at": "2026-11-11T19:23:26.396578Z",
+  "from": {
+    "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+    "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+  },
+  "to": [
+    {
+      "kind": "project"
+    }
+  ],
+  "kind": "decision",
+  "retention": "durable",
+  "expires_at": null,
+  "ticket": "t_2ceb17e1-e399-4d24-b866-af8b3b2c6e99",
+  "reply_to": null,
+  "supersedes": [],
+  "body": "Proposed trial decision: expiry requires recovery. Claude's simulated review identified a still-running writer as the reason. This records a design proposal, not a new user approval."
+}

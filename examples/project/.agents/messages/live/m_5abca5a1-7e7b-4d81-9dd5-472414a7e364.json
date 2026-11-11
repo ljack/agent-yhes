@@ -1,0 +1,24 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "message",
+  "id": "m_5abca5a1-7e7b-4d81-9dd5-472414a7e364",
+  "created_at": "2026-11-11T19:23:26.394852Z",
+  "from": {
+    "agent": "a_8807b788-efa8-4817-bc6d-2bca1ef69a15",
+    "session": "s_396e33a6-fcd4-44dc-8463-06b0109c2f4d"
+  },
+  "to": [
+    {
+      "kind": "agent",
+      "id": "a_4017edc0-ce3c-4deb-91ac-225b0953947b"
+    }
+  ],
+  "kind": "reply",
+  "retention": "ephemeral",
+  "expires_at": "2026-11-11T20:23:26.394852Z",
+  "ticket": "t_2ceb17e1-e399-4d24-b866-af8b3b2c6e99",
+  "reply_to": "m_2b168aca-23b8-40db-acf8-0bf182bd3e37",
+  "supersedes": [],
+  "body": "No. A long-running command may still write after expiry. Require voluntary release or confirmed-stop recovery."
+}

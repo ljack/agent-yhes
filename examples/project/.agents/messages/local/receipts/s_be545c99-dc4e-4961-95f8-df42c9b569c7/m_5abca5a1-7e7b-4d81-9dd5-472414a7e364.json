@@ -1,0 +1,9 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "receipt",
+  "message": "m_5abca5a1-7e7b-4d81-9dd5-472414a7e364",
+  "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7",
+  "stage": "handled",
+  "at": "2026-11-11T19:23:26.397569Z"
+}

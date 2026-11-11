@@ -1,0 +1,11 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "session",
+  "id": "s_be545c99-dc4e-4961-95f8-df42c9b569c7",
+  "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+  "label": "implementer (simulated)",
+  "harness": "codex",
+  "started_at": "2026-11-11T19:23:26.390316Z",
+  "resumes": null
+}

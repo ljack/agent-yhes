@@ -1,0 +1,24 @@
+{
+  "protocol": "local-agent-cooperation",
+  "version": "0.1",
+  "type": "message",
+  "id": "m_ef5e29ab-d92b-498e-ae0b-344d40cf6924",
+  "created_at": "2026-11-11T19:23:26.399254Z",
+  "from": {
+    "agent": "a_4017edc0-ce3c-4deb-91ac-225b0953947b",
+    "session": "s_be545c99-dc4e-4961-95f8-df42c9b569c7"
+  },
+  "to": [
+    {
+      "kind": "agent",
+      "id": "a_8807b788-efa8-4817-bc6d-2bca1ef69a15"
+    }
+  ],
+  "kind": "handoff",
+  "retention": "durable",
+  "expires_at": null,
+  "ticket": "t_b21c8357-2dc1-486b-9ef4-b2e5d031dd0e",
+  "reply_to": null,
+  "supersedes": [],
+  "body": "The deterministic protocol demonstration passed. No live model was launched. Next: an authorized disposable Codex/Claude trial following WALKTHROUGH.md; preserve this distinction in reporting."
+}
