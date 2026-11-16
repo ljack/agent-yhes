@@ -2,12 +2,20 @@
 
 ## Source release checks — 2026-11-16
 
-Before grouping the release tags, the secure source passed 166 Rust workspace
-tests, two explicitly enabled real NATS/TLS tests, 12 simulator example tests,
-strict all-target Clippy, 104 Swift tests and eight GHES fixture tests. The native
-script also repeats three Rust bridge tests. The local/Git/broker and simulation
-Python suites passed 54 checks across the main run and a separate opt-in simulator
-run. These checks add no physical second-Mac or hosted GHES acceptance claim.
+Before grouping the release tags, the current tree passed:
+
+- 166 Rust workspace tests, plus the two explicitly enabled real NATS/TLS tests.
+- 12 simulator example tests and strict all-target Clippy with warnings denied.
+- 104 native Swift tests; the native script also repeats three Rust bridge tests.
+- Eight GHES adapter fixture tests.
+- 56 Python checks across local/Git/broker, simulation and site packaging. The
+  first run skipped the opt-in process-level simulator; it then passed in a
+  separate two-test simulator run with the official broker binary configured.
+- Eight tutorial state tests, the allowlisted Pages build and workflow actionlint.
+
+The tutorial had desktop/mobile browser checks and an independent finish review.
+Its illustrated approval does not invoke the native signer. These release checks
+add no physical second-Mac or hosted GHES acceptance claim.
 
 ## Two-workspace same-Mac simulation — 2026-11-15
 

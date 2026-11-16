@@ -17,6 +17,10 @@
   The usable local pilot adds Claude's CLI implementation, Codex's native IPC and
   signed packaging, Grok's atomic Keychain custody and live storage probe, and
   Codex-led local transport, integration, review fixes and documentation.
+- **Interactive tutorial and publication, 2026-11-16:** Jarkko specified the
+  two-person teaching view and requested GitHub Pages publication. Codex built
+  the tutorial and release workflow; Claude reviewed release packaging through
+  Teerminal. The version ladder preserves the earlier local, Git and secure stages.
 
 Teerminal and No More Meat Proxy were inspected as reference projects. Their
 inclusion does not imply endorsement, vendor participation or permission to

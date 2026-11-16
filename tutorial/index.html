@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="An interactive guide to agent-yhes: two people, their agents, verified identities, encrypted messages and shared Git.">
+  <title>How agent-yhes works</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314665c'/%3E%3Cpath d='M8 9l8 9 8-9M16 18v7' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="model.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#walkthrough">Skip to walkthrough</a>
+  <header class="masthead">
+    <a class="wordmark" href="../README.md">agent-yhes <span> / explained</span></a>
+    <div class="header-actions">
+      <span class="demo-label">Visual demo</span>
+      <button id="theme-toggle" class="quiet-button" aria-label="Switch to dark theme">Dark</button>
+      <button id="start-toggle" class="outlined-button" aria-expanded="false" aria-controls="getting-started">Get started <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+  <main id="walkthrough">
+    <section class="intro" aria-labelledby="page-title">
+      <div><h1 id="page-title">See how agents work together.</h1><p>Two people, their own tools, one shared conversation. Follow the flow—or try a command.</p></div>
+      <p class="demo-note">Illustrated events. No commands are executed.</p>
+    </section>
+    <nav class="chapters" aria-label="Walkthrough chapters" id="chapters"></nav>
+
+    <section class="story" aria-label="Current illustrated step">
+      <div class="step-caption"><span class="step-count" id="step-count"></span><div><h2 id="step-title"></h2><p id="step-text"></p></div></div>
+      <div class="packet" id="packet"><span class="packet-label" id="packet-label">In this step</span><p id="packet-content"></p></div>
+      <div class="story-bottom">
+        <details class="why" id="why"><summary>Why this step?</summary><p id="why-text"></p></details>
+        <div class="transport-controls"><button id="replay" class="quiet-button">Replay</button><button id="previous" class="outlined-button">Back</button><button id="play" class="outlined-button">Play flow</button><button id="next" class="primary-button">Next step <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="progress-track" id="progress-track" aria-hidden="true"></div>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="world" id="world" aria-label="Alice and Bob with their local tools and shared services">
+      <svg class="wires" id="wires" aria-hidden="true"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="currentColor" stroke-width="1.5"/></marker></defs><g id="wire-paths"></g><circle id="traveller" r="5"/></svg>
+
+      <section class="person alice" aria-label="Alice's workspace">
+        <button class="person-heading object" id="alice-human" data-object="human" data-side="alice"><span class="avatar" aria-hidden="true">A</span><span><strong>Alice</strong><small>Human · workspace A</small></span><span class="inspect-hint" aria-hidden="true">?</span></button>
+        <section class="terminal" id="alice-terminal" aria-label="Alice's demo terminal">
+          <div class="terminal-bar"><button class="terminal-title object" data-object="terminal" data-side="alice"><span class="terminal-symbol" aria-hidden="true">›_</span> Alice’s terminal</button><span>DEMO</span></div>
+          <div class="terminal-output" id="alice-output" role="log" aria-label="Alice's illustrated terminal output" aria-live="off"></div>
+          <form class="command-form" id="alice-form"><label for="alice-command" class="sr-only">Alice’s demo command</label><span class="prompt" aria-hidden="true">$</span><input id="alice-command" value="bootstrap" autocomplete="off" spellcheck="false" maxlength="280"><button type="submit" aria-label="Animate Alice's command">Run</button></form>
+          <p class="terminal-error" id="alice-error" role="status"></p>
+          <div class="terminal-help">Try <button type="button" data-fill="alice:send">send</button> <button type="button" data-fill="alice:say">say</button> <button type="button" data-fill="alice:help">help</button><span>Illustration only</span></div>
+        </section>
+        <div class="local-layer" aria-label="Alice's agent environment">
+          <button class="object node" id="alice-harness" data-object="harness" data-side="alice"><span class="icon" data-icon="harness"></span><strong>Harness</strong><small>e.g. Codex</small></button>
+          <button class="object node" id="alice-agent" data-object="agent" data-side="alice"><span class="icon" data-icon="agent"></span><strong>Agent A</strong><small>Own identity</small></button>
+          <button class="object node model-node" id="alice-llm" data-object="llm" data-side="alice"><span class="icon" data-icon="llm"></span><strong>LLM</strong><small>Reasoning</small></button>
+        </div>
+        <div class="local-layer tools-layer" aria-label="Alice's local security and transport tools">
+          <button class="object node" id="alice-biometric" data-object="biometric" data-side="alice"><span class="icon" data-icon="fingerprint"></span><strong>Biometrics</strong><small>Real-device flow</small></button>
+          <button class="object node" id="alice-crypto" data-object="crypto" data-side="alice"><span class="icon" data-icon="lock"></span><strong>Crypto</strong><small>Sign / encrypt</small></button>
+          <button class="object node" id="alice-git" data-object="git" data-side="alice"><span class="icon" data-icon="git"></span><strong>Git</strong><small>Local client</small></button>
+        </div>
+        <p class="local-caption">Keys stay in the local tools.</p>
+      </section>
+
+      <section class="shared" aria-label="Shared infrastructure">
+        <p class="shared-label">Shared infrastructure</p>
+        <button class="object service" id="repository" data-object="repository"><span class="icon" data-icon="repo"></span><strong>Git repository</strong><small>Durable history</small><span class="service-state" id="repo-state">Public identities + sealed records</span></button>
+        <div class="service-connector" aria-hidden="true"></div>
+        <button class="object service" id="jetstream" data-object="jetstream"><span class="icon" data-icon="broadcast"></span><strong>JetStream</strong><small>Realtime notice</small><span class="service-state" id="broker-state">Wakes active listeners</span></button>
+        <button class="broker-toggle" id="broker-toggle" aria-pressed="false">Pause broker in example</button>
+        <p class="shared-note">Git confirms.<br> JetStream notifies.</p>
+      </section>
+
+      <section class="person bob" aria-label="Bob's workspace">
+        <button class="person-heading object" id="bob-human" data-object="human" data-side="bob"><span class="avatar" aria-hidden="true">B</span><span><strong>Bob</strong><small>Human · workspace B</small></span><span class="inspect-hint" aria-hidden="true">?</span></button>
+        <section class="terminal" id="bob-terminal" aria-label="Bob's demo terminal">
+          <div class="terminal-bar"><button class="terminal-title object" data-object="terminal" data-side="bob"><span class="terminal-symbol" aria-hidden="true">›_</span> Bob’s terminal</button><span>DEMO</span></div>
+          <div class="terminal-output" id="bob-output" role="log" aria-label="Bob's illustrated terminal output" aria-live="off"></div>
+          <form class="command-form" id="bob-form"><label for="bob-command" class="sr-only">Bob’s demo command</label><span class="prompt" aria-hidden="true">$</span><input id="bob-command" value="bootstrap" autocomplete="off" spellcheck="false" maxlength="280"><button type="submit" aria-label="Animate Bob's command">Run</button></form>
+          <p class="terminal-error" id="bob-error" role="status"></p>
+          <div class="terminal-help">Try <button type="button" data-fill="bob:send">send</button> <button type="button" data-fill="bob:inbox">inbox</button> <button type="button" data-fill="bob:help">help</button><span>Illustration only</span></div>
+        </section>
+        <div class="local-layer" aria-label="Bob's agent environment">
+          <button class="object node model-node" id="bob-llm" data-object="llm" data-side="bob"><span class="icon" data-icon="llm"></span><strong>LLM</strong><small>Reasoning</small></button>
+          <button class="object node" id="bob-agent" data-object="agent" data-side="bob"><span class="icon" data-icon="agent"></span><strong>Agent B</strong><small>Own identity</small></button>
+          <button class="object node" id="bob-harness" data-object="harness" data-side="bob"><span class="icon" data-icon="harness"></span><strong>Harness</strong><small>e.g. Claude</small></button>
+        </div>
+        <div class="local-layer tools-layer" aria-label="Bob's local security and transport tools">
+          <button class="object node" id="bob-git" data-object="git" data-side="bob"><span class="icon" data-icon="git"></span><strong>Git</strong><small>Local client</small></button>
+          <button class="object node" id="bob-crypto" data-object="crypto" data-side="bob"><span class="icon" data-icon="lock"></span><strong>Crypto</strong><small>Decrypt / verify</small></button>
+          <button class="object node" id="bob-biometric" data-object="biometric" data-side="bob"><span class="icon" data-icon="fingerprint"></span><strong>Biometrics</strong><small>Real-device flow</small></button>
+        </div>
+        <p class="local-caption">Verification happens before text is accepted.</p>
+      </section>
+    </section>
+
+    <section id="getting-started" class="getting-started" hidden aria-labelledby="start-title">
+      <div class="section-heading"><div><h2 id="start-title">Try the real workflow.</h2><p>The animation explains it. The repo contains the runnable tools.</p></div><button class="quiet-button" id="start-close">Back to walkthrough</button></div>
+      <div class="guide-options" role="group" aria-label="Getting started environment"><button class="outlined-button selected" data-guide="simulation" aria-pressed="true">Two users on one Mac</button><button class="outlined-button" data-guide="real" aria-pressed="false">Two people, two Macs</button></div>
+      <div id="simulation-guide">
+        <ol class="setup-steps"><li><strong>Prepare two project folders.</strong><span>Use the repo’s <a href="../BOOTSTRAP.md">bootstrap guide</a> to prepare Alice, Bob and the local Git/NATS lab.</span></li><li><strong>Open an agent in each project.</strong><span>Paste the same short prompt below. Each agent keeps its own role and state.</span></li><li><strong>Let the agents complete the exchange.</strong><span>Check matching membership, verified authors, the broker wake-up and saved history.</span></li></ol>
+        <div class="copy-prompt"><pre id="bootstrap-prompt"></pre><button id="copy-prompt" class="primary-button">Copy prompt</button></div>
+        <p class="guide-note">The same-Mac lab uses disposable software identities. Human consent is simulated; it does not request Touch ID.</p>
+      </div>
+      <div id="real-guide" hidden>
+        <ol class="setup-steps"><li><strong>Prepare each Mac and a private Git remote.</strong><span>Each person needs their own signed, provisioned client. Choose the founder and preserve the repository’s signing policy.</span></li><li><strong>Check trust, then join.</strong><span>Verify the authority fingerprint and bootstrap digest independently. Review enrollment, delegation and membership in the native app.</span></li><li><strong>Add the agreed broker and test both ways.</strong><span>Use TLS, verify a real question/reply and human original, then check restart and Git catch-up.</span></li></ol>
+        <p><a class="text-link" href="../docs/TEAM-PILOT.md">Open the two-person runbook →</a> <a class="text-link" href="../docs/NEW-MEMBER-AGENT.md">Joining agent instructions →</a></p>
+        <p class="guide-note">Current pilot: two people, one agent each, a fresh online first join. Distribution, renewal and recovery limits are documented in the runbook.</p>
+      </div>
+      <p id="copy-status" role="status"></p>
+    </section>
+  </main>
+  <div id="mobile-playback" class="mobile-playback" hidden aria-label="Walkthrough controls">
+    <p><span id="mobile-count"></span><strong id="mobile-title"></strong></p>
+    <div><button id="mobile-back" class="outlined-button">Back</button><button id="mobile-play" class="outlined-button">Play flow</button><button id="mobile-next" class="primary-button">Next step</button></div>
+  </div>
+  <footer><span>yhes means “together.”</span><span>Illustrative shortcuts · no shell, model, signature or encryption runs here.</span><a href="../docs/VALIDATION.md">What has been verified</a></footer>
+
+  <aside id="inspector" class="inspector" hidden aria-labelledby="object-title"><div class="inspector-heading"><span id="object-owner"></span><button id="inspector-close" class="quiet-button" aria-label="Close object explanation">Close</button></div><h2 id="object-title"></h2><p class="object-job" id="object-job"></p><p id="object-detail"></p><h3>Why it matters</h3><p id="object-why"></p></aside>
+
+  <dialog id="approval-dialog" aria-labelledby="approval-title" aria-describedby="approval-note"><div class="approval-top"><span class="icon" data-icon="fingerprint"></span><span>Illustrated human review</span></div><h2 id="approval-title">Review the exact statement.</h2><blockquote id="approval-text"></blockquote><dl><div><dt>Human author</dt><dd id="approval-author"></dd></div><div><dt>Recipients</dt><dd>Alice’s agent, Bob’s agent</dd></div></dl><p id="approval-note">This is a visual example. Real signing happens in the native app with Touch ID. The same-Mac simulator uses test identities.</p><div class="approval-actions"><button id="approval-cancel" class="outlined-button">Cancel example</button><button id="approval-confirm" class="primary-button">Approve example</button></div></dialog>
+  <noscript><p class="no-script">Enable JavaScript to step through the visual tutorial. The <a href="../GETTING-STARTED.md">written getting-started guide</a> is also available.</p></noscript>
+</body>
+</html>

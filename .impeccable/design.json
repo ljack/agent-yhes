@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T07:53:19.979554+00:00",
+  "title": "Design System: agent-yhes educational tutorial",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Bg",
+        "tonalRamp": [
+          "oklch(15.00% 0.0015 219.53)",
+          "oklch(26.00% 0.0026 219.53)",
+          "oklch(38.00% 0.0035 219.53)",
+          "oklch(49.00% 0.0035 219.53)",
+          "oklch(61.00% 0.0035 219.53)",
+          "oklch(72.00% 0.0035 219.53)",
+          "oklch(84.00% 0.0022 219.53)",
+          "oklch(95.00% 0.0007 219.53)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0.00)",
+          "oklch(26.00% 0.0000 0.00)",
+          "oklch(38.00% 0.0000 0.00)",
+          "oklch(49.00% 0.0000 0.00)",
+          "oklch(61.00% 0.0000 0.00)",
+          "oklch(72.00% 0.0000 0.00)",
+          "oklch(84.00% 0.0000 0.00)",
+          "oklch(95.00% 0.0000 0.00)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0030 219.56)",
+          "oklch(26.00% 0.0052 219.56)",
+          "oklch(38.00% 0.0070 219.56)",
+          "oklch(49.00% 0.0070 219.56)",
+          "oklch(61.00% 0.0070 219.56)",
+          "oklch(72.00% 0.0070 219.56)",
+          "oklch(84.00% 0.0045 219.56)",
+          "oklch(95.00% 0.0014 219.56)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0124 230.86)",
+          "oklch(26.00% 0.0215 230.86)",
+          "oklch(38.00% 0.0289 230.86)",
+          "oklch(49.00% 0.0289 230.86)",
+          "oklch(61.00% 0.0289 230.86)",
+          "oklch(72.00% 0.0289 230.86)",
+          "oklch(84.00% 0.0185 230.86)",
+          "oklch(95.00% 0.0058 230.86)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0100 229.46)",
+          "oklch(26.00% 0.0173 229.46)",
+          "oklch(38.00% 0.0233 229.46)",
+          "oklch(49.00% 0.0233 229.46)",
+          "oklch(61.00% 0.0233 229.46)",
+          "oklch(72.00% 0.0233 229.46)",
+          "oklch(84.00% 0.0149 229.46)",
+          "oklch(95.00% 0.0047 229.46)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15.00% 0.0056 221.44)",
+          "oklch(26.00% 0.0098 221.44)",
+          "oklch(38.00% 0.0131 221.44)",
+          "oklch(49.00% 0.0131 221.44)",
+          "oklch(61.00% 0.0131 221.44)",
+          "oklch(72.00% 0.0131 221.44)",
+          "oklch(84.00% 0.0084 221.44)",
+          "oklch(95.00% 0.0026 221.44)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.0326 182.64)",
+          "oklch(26.00% 0.0565 182.64)",
+          "oklch(38.00% 0.0761 182.64)",
+          "oklch(49.00% 0.0761 182.64)",
+          "oklch(61.00% 0.0761 182.64)",
+          "oklch(72.00% 0.0761 182.64)",
+          "oklch(84.00% 0.0487 182.64)",
+          "oklch(95.00% 0.0152 182.64)"
+        ]
+      },
+      "accent-text": {
+        "role": "primary",
+        "displayName": "Accent Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0.00)",
+          "oklch(26.00% 0.0000 0.00)",
+          "oklch(38.00% 0.0000 0.00)",
+          "oklch(49.00% 0.0000 0.00)",
+          "oklch(61.00% 0.0000 0.00)",
+          "oklch(72.00% 0.0000 0.00)",
+          "oklch(84.00% 0.0000 0.00)",
+          "oklch(95.00% 0.0000 0.00)"
+        ]
+      },
+      "alice": {
+        "role": "secondary",
+        "displayName": "Alice",
+        "tonalRamp": [
+          "oklch(15.00% 0.0543 271.54)",
+          "oklch(26.00% 0.0941 271.54)",
+          "oklch(38.00% 0.1267 271.54)",
+          "oklch(49.00% 0.1267 271.54)",
+          "oklch(61.00% 0.1267 271.54)",
+          "oklch(72.00% 0.1267 271.54)",
+          "oklch(84.00% 0.0811 271.54)",
+          "oklch(95.00% 0.0253 271.54)"
+        ]
+      },
+      "alice-soft": {
+        "role": "secondary",
+        "displayName": "Alice Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0070 274.82)",
+          "oklch(26.00% 0.0122 274.82)",
+          "oklch(38.00% 0.0164 274.82)",
+          "oklch(49.00% 0.0164 274.82)",
+          "oklch(61.00% 0.0164 274.82)",
+          "oklch(72.00% 0.0164 274.82)",
+          "oklch(84.00% 0.0105 274.82)",
+          "oklch(95.00% 0.0033 274.82)"
+        ]
+      },
+      "bob": {
+        "role": "primary",
+        "displayName": "Bob",
+        "tonalRamp": [
+          "oklch(15.00% 0.0358 179.38)",
+          "oklch(26.00% 0.0621 179.38)",
+          "oklch(38.00% 0.0836 179.38)",
+          "oklch(49.00% 0.0836 179.38)",
+          "oklch(61.00% 0.0836 179.38)",
+          "oklch(72.00% 0.0836 179.38)",
+          "oklch(84.00% 0.0535 179.38)",
+          "oklch(95.00% 0.0167 179.38)"
+        ]
+      },
+      "bob-soft": {
+        "role": "primary",
+        "displayName": "Bob Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0069 172.64)",
+          "oklch(26.00% 0.0120 172.64)",
+          "oklch(38.00% 0.0162 172.64)",
+          "oklch(49.00% 0.0162 172.64)",
+          "oklch(61.00% 0.0162 172.64)",
+          "oklch(72.00% 0.0162 172.64)",
+          "oklch(84.00% 0.0104 172.64)",
+          "oklch(95.00% 0.0032 172.64)"
+        ]
+      },
+      "terminal": {
+        "role": "neutral",
+        "displayName": "Terminal",
+        "tonalRamp": [
+          "oklch(15.00% 0.0110 237.30)",
+          "oklch(26.00% 0.0191 237.30)",
+          "oklch(38.00% 0.0257 237.30)",
+          "oklch(49.00% 0.0257 237.30)",
+          "oklch(61.00% 0.0257 237.30)",
+          "oklch(72.00% 0.0257 237.30)",
+          "oklch(84.00% 0.0164 237.30)",
+          "oklch(95.00% 0.0051 237.30)"
+        ]
+      },
+      "terminal-text": {
+        "role": "neutral",
+        "displayName": "Terminal Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 239.91)",
+          "oklch(26.00% 0.0088 239.91)",
+          "oklch(38.00% 0.0118 239.91)",
+          "oklch(49.00% 0.0118 239.91)",
+          "oklch(61.00% 0.0118 239.91)",
+          "oklch(72.00% 0.0118 239.91)",
+          "oklch(84.00% 0.0076 239.91)",
+          "oklch(95.00% 0.0024 239.91)"
+        ]
+      },
+      "terminal-muted": {
+        "role": "neutral",
+        "displayName": "Terminal Muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0109 234.53)",
+          "oklch(26.00% 0.0188 234.53)",
+          "oklch(38.00% 0.0253 234.53)",
+          "oklch(49.00% 0.0253 234.53)",
+          "oklch(61.00% 0.0253 234.53)",
+          "oklch(72.00% 0.0253 234.53)",
+          "oklch(84.00% 0.0162 234.53)",
+          "oklch(95.00% 0.0051 234.53)"
+        ]
+      },
+      "terminal-line": {
+        "role": "neutral",
+        "displayName": "Terminal Line",
+        "tonalRamp": [
+          "oklch(15.00% 0.0109 237.47)",
+          "oklch(26.00% 0.0190 237.47)",
+          "oklch(38.00% 0.0255 237.47)",
+          "oklch(49.00% 0.0255 237.47)",
+          "oklch(61.00% 0.0255 237.47)",
+          "oklch(72.00% 0.0255 237.47)",
+          "oklch(84.00% 0.0163 237.47)",
+          "oklch(95.00% 0.0051 237.47)"
+        ]
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.0595 249.39)",
+          "oklch(26.00% 0.1031 249.39)",
+          "oklch(38.00% 0.1388 249.39)",
+          "oklch(49.00% 0.1388 249.39)",
+          "oklch(61.00% 0.1388 249.39)",
+          "oklch(72.00% 0.1388 249.39)",
+          "oklch(84.00% 0.0888 249.39)",
+          "oklch(95.00% 0.0278 249.39)"
+        ]
+      },
+      "warning": {
+        "role": "secondary",
+        "displayName": "Warning",
+        "tonalRamp": [
+          "oklch(15.00% 0.0452 65.92)",
+          "oklch(26.00% 0.0783 65.92)",
+          "oklch(38.00% 0.1054 65.92)",
+          "oklch(49.00% 0.1054 65.92)",
+          "oklch(61.00% 0.1054 65.92)",
+          "oklch(72.00% 0.1054 65.92)",
+          "oklch(84.00% 0.0675 65.92)",
+          "oklch(95.00% 0.0211 65.92)"
+        ]
+      },
+      "warning-soft": {
+        "role": "secondary",
+        "displayName": "Warning Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0143 81.99)",
+          "oklch(26.00% 0.0247 81.99)",
+          "oklch(38.00% 0.0333 81.99)",
+          "oklch(49.00% 0.0333 81.99)",
+          "oklch(61.00% 0.0333 81.99)",
+          "oklch(72.00% 0.0333 81.99)",
+          "oklch(84.00% 0.0213 81.99)",
+          "oklch(95.00% 0.0067 81.99)"
+        ]
+      },
+      "route": {
+        "role": "neutral",
+        "displayName": "Route",
+        "tonalRamp": [
+          "oklch(15.00% 0.0225 253.67)",
+          "oklch(26.00% 0.0390 253.67)",
+          "oklch(38.00% 0.0525 253.67)",
+          "oklch(49.00% 0.0525 253.67)",
+          "oklch(61.00% 0.0525 253.67)",
+          "oklch(72.00% 0.0525 253.67)",
+          "oklch(84.00% 0.0336 253.67)",
+          "oklch(95.00% 0.0105 253.67)"
+        ]
+      },
+      "bg-dark": {
+        "role": "neutral",
+        "displayName": "Bg Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0090 236.90)",
+          "oklch(26.00% 0.0155 236.90)",
+          "oklch(38.00% 0.0209 236.90)",
+          "oklch(49.00% 0.0209 236.90)",
+          "oklch(61.00% 0.0209 236.90)",
+          "oklch(72.00% 0.0209 236.90)",
+          "oklch(84.00% 0.0134 236.90)",
+          "oklch(95.00% 0.0042 236.90)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0112 235.34)",
+          "oklch(26.00% 0.0195 235.34)",
+          "oklch(38.00% 0.0262 235.34)",
+          "oklch(49.00% 0.0262 235.34)",
+          "oklch(61.00% 0.0262 235.34)",
+          "oklch(72.00% 0.0262 235.34)",
+          "oklch(84.00% 0.0168 235.34)",
+          "oklch(95.00% 0.0052 235.34)"
+        ]
+      },
+      "soft-dark": {
+        "role": "neutral",
+        "displayName": "Soft Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0126 233.21)",
+          "oklch(26.00% 0.0218 233.21)",
+          "oklch(38.00% 0.0294 233.21)",
+          "oklch(49.00% 0.0294 233.21)",
+          "oklch(61.00% 0.0294 233.21)",
+          "oklch(72.00% 0.0294 233.21)",
+          "oklch(84.00% 0.0188 233.21)",
+          "oklch(95.00% 0.0059 233.21)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0030 219.56)",
+          "oklch(26.00% 0.0052 219.56)",
+          "oklch(38.00% 0.0069 219.56)",
+          "oklch(49.00% 0.0069 219.56)",
+          "oklch(61.00% 0.0069 219.56)",
+          "oklch(72.00% 0.0069 219.56)",
+          "oklch(84.00% 0.0044 219.56)",
+          "oklch(95.00% 0.0014 219.56)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0082 232.58)",
+          "oklch(26.00% 0.0142 232.58)",
+          "oklch(38.00% 0.0192 232.58)",
+          "oklch(49.00% 0.0192 232.58)",
+          "oklch(61.00% 0.0192 232.58)",
+          "oklch(72.00% 0.0192 232.58)",
+          "oklch(84.00% 0.0123 232.58)",
+          "oklch(95.00% 0.0038 232.58)"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Line Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0138 229.99)",
+          "oklch(26.00% 0.0240 229.99)",
+          "oklch(38.00% 0.0323 229.99)",
+          "oklch(49.00% 0.0323 229.99)",
+          "oklch(61.00% 0.0323 229.99)",
+          "oklch(72.00% 0.0323 229.99)",
+          "oklch(84.00% 0.0207 229.99)",
+          "oklch(95.00% 0.0065 229.99)"
+        ]
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "Accent Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0365 176.52)",
+          "oklch(26.00% 0.0632 176.52)",
+          "oklch(38.00% 0.0851 176.52)",
+          "oklch(49.00% 0.0851 176.52)",
+          "oklch(61.00% 0.0851 176.52)",
+          "oklch(72.00% 0.0851 176.52)",
+          "oklch(84.00% 0.0544 176.52)",
+          "oklch(95.00% 0.0170 176.52)"
+        ]
+      },
+      "accent-text-dark": {
+        "role": "primary",
+        "displayName": "Accent Text Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0144 179.37)",
+          "oklch(26.00% 0.0249 179.37)",
+          "oklch(38.00% 0.0336 179.37)",
+          "oklch(49.00% 0.0336 179.37)",
+          "oklch(61.00% 0.0336 179.37)",
+          "oklch(72.00% 0.0336 179.37)",
+          "oklch(84.00% 0.0215 179.37)",
+          "oklch(95.00% 0.0067 179.37)"
+        ]
+      },
+      "alice-dark": {
+        "role": "secondary",
+        "displayName": "Alice Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0391 275.98)",
+          "oklch(26.00% 0.0678 275.98)",
+          "oklch(38.00% 0.0913 275.98)",
+          "oklch(49.00% 0.0913 275.98)",
+          "oklch(61.00% 0.0913 275.98)",
+          "oklch(72.00% 0.0913 275.98)",
+          "oklch(84.00% 0.0584 275.98)",
+          "oklch(95.00% 0.0183 275.98)"
+        ]
+      },
+      "alice-soft-dark": {
+        "role": "secondary",
+        "displayName": "Alice Soft Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0263 269.45)",
+          "oklch(26.00% 0.0455 269.45)",
+          "oklch(38.00% 0.0613 269.45)",
+          "oklch(49.00% 0.0613 269.45)",
+          "oklch(61.00% 0.0613 269.45)",
+          "oklch(72.00% 0.0613 269.45)",
+          "oklch(84.00% 0.0392 269.45)",
+          "oklch(95.00% 0.0123 269.45)"
+        ]
+      },
+      "bob-dark": {
+        "role": "primary",
+        "displayName": "Bob Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0350 175.94)",
+          "oklch(26.00% 0.0607 175.94)",
+          "oklch(38.00% 0.0817 175.94)",
+          "oklch(49.00% 0.0817 175.94)",
+          "oklch(61.00% 0.0817 175.94)",
+          "oklch(72.00% 0.0817 175.94)",
+          "oklch(84.00% 0.0523 175.94)",
+          "oklch(95.00% 0.0163 175.94)"
+        ]
+      },
+      "bob-soft-dark": {
+        "role": "primary",
+        "displayName": "Bob Soft Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0193 177.26)",
+          "oklch(26.00% 0.0334 177.26)",
+          "oklch(38.00% 0.0450 177.26)",
+          "oklch(49.00% 0.0450 177.26)",
+          "oklch(61.00% 0.0450 177.26)",
+          "oklch(72.00% 0.0450 177.26)",
+          "oklch(84.00% 0.0288 177.26)",
+          "oklch(95.00% 0.0090 177.26)"
+        ]
+      },
+      "terminal-dark": {
+        "role": "neutral",
+        "displayName": "Terminal Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0081 235.36)",
+          "oklch(26.00% 0.0141 235.36)",
+          "oklch(38.00% 0.0190 235.36)",
+          "oklch(49.00% 0.0190 235.36)",
+          "oklch(61.00% 0.0190 235.36)",
+          "oklch(72.00% 0.0190 235.36)",
+          "oklch(84.00% 0.0122 235.36)",
+          "oklch(95.00% 0.0038 235.36)"
+        ]
+      },
+      "focus-dark": {
+        "role": "secondary",
+        "displayName": "Focus Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0407 247.69)",
+          "oklch(26.00% 0.0706 247.69)",
+          "oklch(38.00% 0.0950 247.69)",
+          "oklch(49.00% 0.0950 247.69)",
+          "oklch(61.00% 0.0950 247.69)",
+          "oklch(72.00% 0.0950 247.69)",
+          "oklch(84.00% 0.0608 247.69)",
+          "oklch(95.00% 0.0190 247.69)"
+        ]
+      },
+      "warning-dark": {
+        "role": "secondary",
+        "displayName": "Warning Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0393 77.40)",
+          "oklch(26.00% 0.0680 77.40)",
+          "oklch(38.00% 0.0916 77.40)",
+          "oklch(49.00% 0.0916 77.40)",
+          "oklch(61.00% 0.0916 77.40)",
+          "oklch(72.00% 0.0916 77.40)",
+          "oklch(84.00% 0.0586 77.40)",
+          "oklch(95.00% 0.0183 77.40)"
+        ]
+      },
+      "warning-soft-dark": {
+        "role": "secondary",
+        "displayName": "Warning Soft Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0172 78.07)",
+          "oklch(26.00% 0.0298 78.07)",
+          "oklch(38.00% 0.0402 78.07)",
+          "oklch(49.00% 0.0402 78.07)",
+          "oklch(61.00% 0.0402 78.07)",
+          "oklch(72.00% 0.0402 78.07)",
+          "oklch(84.00% 0.0257 78.07)",
+          "oklch(95.00% 0.0080 78.07)"
+        ]
+      },
+      "route-dark": {
+        "role": "neutral",
+        "displayName": "Route Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0192 254.78)",
+          "oklch(26.00% 0.0334 254.78)",
+          "oklch(38.00% 0.0449 254.78)",
+          "oklch(49.00% 0.0449 254.78)",
+          "oklch(61.00% 0.0449 254.78)",
+          "oklch(72.00% 0.0449 254.78)",
+          "oklch(84.00% 0.0287 254.78)",
+          "oklch(95.00% 0.0090 254.78)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "App headline",
+        "purpose": "Compact tutorial page heading."
+      },
+      "title": {
+        "displayName": "Step title",
+        "purpose": "Current operation."
+      },
+      "body": {
+        "displayName": "App body",
+        "purpose": "Inherited text rhythm."
+      },
+      "prose": {
+        "displayName": "Explanatory prose",
+        "purpose": "Narration and inspector text."
+      },
+      "label": {
+        "displayName": "Control label",
+        "purpose": "Main action labels."
+      },
+      "code": {
+        "displayName": "Terminal code",
+        "purpose": "Commands and terminal records."
+      }
+    },
+    "shadows": [
+      {
+        "name": "inspector-light",
+        "value": "0 12px 42px rgba(0,0,0,.16)",
+        "purpose": "Floating explanation in light theme."
+      },
+      {
+        "name": "inspector-dark",
+        "value": "0 12px 42px rgba(0,0,0,.35)",
+        "purpose": "Floating explanation in dark theme."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "160ms ease",
+        "purpose": "Control and node state transitions."
+      },
+      {
+        "name": "route-traveller",
+        "value": "900–2300ms linear",
+        "purpose": "One packet dot follows the current route."
+      },
+      {
+        "name": "playback-cadence",
+        "value": "3100ms",
+        "purpose": "Autoplay step interval, stopping at review gates and chapter ends."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Suppress CSS transitions and travelling-dot animation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "780px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1080px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1450px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tutorial action with source hover, focus and disabled states.",
+      "html": "<button class=\"ds-button-primary\">Next step</button>",
+      "css": ".ds-button-primary{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;min-height:40px;padding:8px 14px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.25;transition:background .16s ease,color .16s ease;background:var(--accent, #14665c);color:var(--accent-text, #fff);border:1px solid transparent}.ds-button-primary:hover{filter:brightness(.93)}.ds-button-primary:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}.ds-button-primary:disabled{opacity:.42;cursor:default}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}"
+    },
+    {
+      "name": "Outlined button",
+      "kind": "button",
+      "refersTo": "button-outlined",
+      "description": "Tutorial action with source hover, focus and disabled states.",
+      "html": "<button class=\"ds-button-outlined\">Back</button>",
+      "css": ".ds-button-outlined{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;min-height:40px;padding:8px 14px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.25;transition:background .16s ease,color .16s ease;background:var(--surface, #fff);color:var(--ink, #192b34);border:1px solid var(--line, #ced9dd)}.ds-button-outlined:hover{background:var(--soft, #eaf0f2)}.ds-button-outlined:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}.ds-button-outlined:disabled{opacity:.42;cursor:default}.ds-button-outlined[aria-pressed=\"true\"]{background:var(--accent, #14665c);color:var(--accent-text, #fff);border-color:var(--accent, #14665c)}@media(prefers-reduced-motion:reduce){.ds-button-outlined{transition:none}}"
+    },
+    {
+      "name": "Quiet button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Tutorial action with source hover, focus and disabled states.",
+      "html": "<button class=\"ds-button-quiet\">Replay</button>",
+      "css": ".ds-button-quiet{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;min-height:40px;padding:8px 14px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.25;transition:background .16s ease,color .16s ease;background:transparent;color:var(--ink, #192b34);border:1px solid transparent}.ds-button-quiet:hover{background:var(--soft, #eaf0f2)}.ds-button-quiet:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}.ds-button-quiet:disabled{opacity:.42;cursor:default}@media(prefers-reduced-motion:reduce){.ds-button-quiet{transition:none}}"
+    },
+    {
+      "name": "Terminal Run button",
+      "kind": "button",
+      "refersTo": "button-run",
+      "description": "Contextual action for the illustrated command parser.",
+      "html": "<button class=\"ds-run\" aria-label=\"Animate Alice’s command\">Run</button>",
+      "css": ".ds-run{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;border:0;border-radius:4px;padding:7px 10px;color:#152a25;background:#b0decf;font-size:11px;font-weight:700;min-height:30px}.ds-run:hover{background:#c6ebdf}.ds-run:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}"
+    },
+    {
+      "name": "Command field",
+      "kind": "input",
+      "refersTo": "command-field",
+      "description": "Dark inset command entry with monospace text.",
+      "html": "<div class=\"ds-field\"><span class=\"ds-prompt\" aria-hidden=\"true\">$</span><input aria-label=\"Alice’s demo command\" value=\"bootstrap\" autocomplete=\"off\" spellcheck=\"false\" maxlength=\"280\"></div>",
+      "css": ".ds-field{display:flex;align-items:center;gap:8px;background:#0f1b23;border:1px solid var(--terminal-line, #3b4a54);border-radius:5px;min-height:40px;padding:3px 4px 3px 10px}.ds-prompt{color:var(--terminal-muted, #a8bac5);font:13px ui-monospace, SFMono-Regular, Consolas, monospace}.ds-field input{width:100%;min-width:0;border:0;background:transparent;color:var(--terminal-text, #e2eaf0);padding:6px 0;font:12px ui-monospace, SFMono-Regular, Consolas, monospace;caret-color:#b7deff}.ds-field input::placeholder{color:var(--terminal-muted, #a8bac5)}.ds-field input:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:1px}"
+    },
+    {
+      "name": "Chapter navigation",
+      "kind": "nav",
+      "refersTo": "chapter-current",
+      "description": "Meaningful numbered sequence and explicit current chapter.",
+      "html": "<nav class=\"ds-chapters\" aria-label=\"Walkthrough chapters\"><button class=\"ds-chapter\" aria-current=\"step\">1 Connect</button><button class=\"ds-chapter\">2 Message</button><button class=\"ds-chapter\">3 Human approval</button><button class=\"ds-chapter\">4 Catch up</button></nav>",
+      "css": ".ds-chapters{display:flex;gap:4px;border-bottom:1px solid var(--line, #ced9dd);padding-bottom:12px}.ds-chapter{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;display:flex;gap:10px;align-items:center;padding:10px 16px;border:0;border-radius:6px;background:transparent;color:var(--muted, #56666e);font-weight:600;font-size:13px}.ds-chapter:hover{background:var(--soft, #eaf0f2);color:var(--ink, #192b34)}.ds-chapter[aria-current=\"step\"]{background:var(--ink, #192b34);color:var(--bg, #f4f7f8)}.ds-chapter:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}@media(max-width:780px){.ds-chapters{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding-bottom:10px}.ds-chapter{white-space:nowrap;padding:9px 10px;font-size:12px;gap:6px}}"
+    },
+    {
+      "name": "Local actor node",
+      "kind": "card",
+      "refersTo": "local-node",
+      "description": "Alice agent node with inspection and current-route states; Bob uses Bob colors.",
+      "html": "<button class=\"ds-node\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"6\" width=\"14\" height=\"14\" rx=\"3\"/><path d=\"M12 3v3M2 11h3m14 0h3M9 12h.01M15 12h.01M9 16h6\"/></svg><strong>Agent A</strong><small>Own identity</small></button>",
+      "css": ".ds-node{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;--person:var(--alice, #4354a2);--person-soft:var(--alice-soft, #edf0fc);background:var(--surface, #fff);border:1px solid var(--line, #ced9dd);border-radius:6px;min-height:70px;padding:7px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink, #192b34);transition:background .16s ease,border-color .16s ease}.ds-node svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;color:var(--muted, #56666e);margin-bottom:3px}.ds-node strong{font-size:12px;font-weight:650}.ds-node small{font-size:11px;color:var(--muted, #56666e);line-height:1.4;text-align:center}.ds-node:hover,.ds-node[data-selected=\"true\"]{background:var(--person-soft);border-color:var(--person)}.ds-node[data-active=\"true\"]{background:var(--person-soft);border-color:var(--person);box-shadow:inset 0 0 0 1px var(--person)}.ds-node[data-active=\"true\"] svg,.ds-node[data-active=\"true\"] strong{color:var(--person)}.ds-node:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-node{transition:none}}"
+    },
+    {
+      "name": "Shared service",
+      "kind": "card",
+      "refersTo": "shared-service",
+      "description": "Neutral infrastructure with active and offline states.",
+      "html": "<button class=\"ds-service\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 3h14v18H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 0v14h14M3 18h16M8 7h7m-7 4h5\"/></svg><strong>Git repository</strong><small>Durable history</small><span class=\"ds-state\">Public identities + sealed records</span></button>",
+      "css": ".ds-service{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;cursor:pointer;width:100%;display:flex;align-items:center;flex-direction:column;gap:3px;min-height:124px;border:1px solid var(--line, #ced9dd);border-radius:9px;background:var(--surface, #fff);color:var(--ink, #192b34);padding:15px 9px}.ds-service svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:5px}.ds-service strong{font-size:14px;font-weight:650}.ds-service small{font-size:11px;color:var(--muted, #56666e)}.ds-state{font-size:11px;color:var(--muted, #56666e);margin-top:6px;line-height:1.4;min-height:28px}.ds-service:hover,.ds-service[data-selected=\"true\"]{background:var(--soft, #eaf0f2);border-color:var(--ink, #192b34)}.ds-service[data-active=\"true\"]{background:var(--bob-soft, #e6f4ef);border-color:var(--accent, #14665c);box-shadow:inset 0 0 0 1px var(--accent, #14665c)}.ds-service[data-offline=\"true\"]{border-style:dashed;border-color:var(--warning, #8a540d);background:var(--warning-soft, #fff2db)}.ds-service[data-offline=\"true\"] .ds-state{color:var(--warning, #8a540d)}.ds-service:focus-visible{outline:3px solid var(--focus, #267bc5);outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Authorship and transport, visible",
+    "overview": "This record covers only the educational HTML tutorial in tutorial/. It does not set design policy for the protocol, CLI or native macOS signer. It describes the finished source implementation, not browser-computed measurements.\n\nA cool workspace supports dark terminals and named local actors. Restrained app typography, stable actor colors and fine boundaries keep one operation legible at a time. Optional explanations preserve a compact first view. The north star is a descriptive summary of the supplied direction, not a separately selected brand concept.",
+    "keyCharacteristics": [
+      "Cool neutral workspace with dark terminals.",
+      "Persistent indigo Alice and teal Bob identities.",
+      "Stable actor geometry with one current route.",
+      "Progressive disclosure and synchronized mobile playback."
+    ],
+    "rules": [
+      {
+        "name": "The Actor Identity Rule",
+        "body": "Keep Alice indigo and Bob teal, with names and positions providing redundant identity cues.",
+        "section": "colors"
+      },
+      {
+        "name": "The Literal Code Rule",
+        "body": "Reserve monospace for commands, terminal records and sealed packet labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Workspace Rule",
+        "body": "Use borders and tonal surfaces for diagram structure; reserve the ambient shadow for the floating inspector.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve actor names, positions and colors across steps.",
+      "Do synchronize narration, packet state and playback controls.",
+      "Do retain optional Why text and object inspection.",
+      "Do use authored inline SVG for the diagram icon system.",
+      "Do retain theme-aware keyboard focus and reduced-motion behavior."
+    ],
+    "donts": [
+      "Don't extend this tutorial record into protocol, CLI or native signer design policy.",
+      "Don't use color alone for identity or state.",
+      "Don't imply illustrative commands execute real operations.",
+      "Don't treat review screenshots as shipped imagery."
+    ]
+  }
+}

@@ -17,10 +17,16 @@ shared. The simulation uses disposable keys and does not request Touch ID.
 For real human identities and device approval, use the
 [team pilot guide](docs/TEAM-PILOT.md).
 
+Want to see the flow first? Open the [interactive tutorial](https://ljack.github.io/agent-yhes/):
+two terminals, a shared Git repository, realtime notices and human approval.
+You can also [run it locally](tutorial/README.md).
 
 ---
 
 **Agents and people working together, across harnesses and computers.**
+
+Current package: **v0.4.0**. See the [version ladder](docs/RELEASES.md) to try the
+local, remote Git, secure team and tutorial stages independently.
 
 *Yhes* is short for the Finnish *yhessä*, a colloquial form of *yhdessä*
 ("together"): **agents together**. Jarkko chose the name **agent-yhes**.

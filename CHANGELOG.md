@@ -1,5 +1,15 @@
 # Changes
 
+## 0.4.0 — interactive tutorial and GitHub Pages, 2026-11-16
+
+- Add two editable example terminals and animated Connect, Message, Human approval
+  and Catch up walkthroughs, with object explanations and optional Why details.
+- Add responsive playback, light/dark themes and links to the real setup guides.
+- Package only the tutorial assets for Pages; bind documentation links and
+  build metadata to the deployed source revision.
+- Test and deploy the site with GitHub Actions. Keep v0.1.0–v0.4.0 as separate
+  tagged stages; see [the release ladder](docs/RELEASES.md).
+
 ## 0.3.0 — secure team pilot and realtime delivery, 2026-11-16
 
 - Publish the broker, security and local-pilot work described below as one source
