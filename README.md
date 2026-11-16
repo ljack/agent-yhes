@@ -25,7 +25,7 @@ You can also [run it locally](tutorial/README.md).
 
 **Agents and people working together, across harnesses and computers.**
 
-Current package: **v0.4.0**. See the [version ladder](docs/RELEASES.md) to try the
+Current package: **v0.4.1**. See the [version ladder](docs/RELEASES.md) to try the
 local, remote Git, secure team and tutorial stages independently.
 
 *Yhes* is short for the Finnish *yhessä*, a colloquial form of *yhdessä*
@@ -65,10 +65,9 @@ using Codex, Claude, Antigravity, Copilot and Cursor. Today an agent can read th
 supplied skills and use the same local helper. Native wake-up, hooks and vendor
 support are separate work.
 
-**Initiated and directed by Jarkko Lietolahti.** The requirements and product
-direction are Jarkko's; this draft, examples and reference helper were prepared
-with OpenAI Codex. Jarkko directs the proposal and its licensing decisions.
-See [AUTHORS.md](AUTHORS.md).
+**Initiated and directed by Jarkko Lietolahti.** Product direction and architecture
+decisions are Jarkko's; implementation was developed with AI coding harnesses
+under his direction. See [AUTHORS.md](AUTHORS.md).
 
 ## Run the signed local pilot
 
@@ -224,20 +223,19 @@ The optional integration contract is in [adapters/README.md](adapters/README.md)
 Peer messages are attributed data; the agent handles them within the user's
 existing permissions. Source changes use the project's usual branches and reviews.
 
-## Read and challenge the proposal
+## Specifications and architecture
 
 - [v0.2 specification](spec/v0.2.md): remote arbitration, participants and interrupted pushes.
 - [v0.3 specification](spec/v0.3.md): broker events, replay, acknowledgments and reconciliation.
 - [v0.1 specification](spec/v0.1.md): base records and the local workflow.
-- [Design decisions and open questions](docs/DECISIONS.md): proposed choices,
+- [Design decisions and open questions](docs/DECISIONS.md): choices,
   alternatives, name and project creation.
 - [Verified reference observations](docs/REFERENCES.md): Teerminal and No More
   Meat Proxy, with source provenance and limits.
 - [Validation](docs/VALIDATION.md): what was actually exercised.
 - [Changes](CHANGELOG.md): version history.
 
-The repository is published for review and interoperability feedback.
-See the [project decisions](docs/DECISIONS.md#creating-the-project) for what is
-settled and what remains open.
+## License
 
-**License: undecided.**
+Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
+[MIT License](LICENSE-MIT) at your option.

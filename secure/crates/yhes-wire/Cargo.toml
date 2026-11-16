@@ -4,6 +4,7 @@ description = "Signed-event and registry verifier for the agent-yhes secure prof
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
+license.workspace = true
 publish = false
 
 [dependencies]

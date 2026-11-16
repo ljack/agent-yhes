@@ -77,3 +77,73 @@ test('all required actors are described and scenario routes only use known objec
   }
   assert.equal(Object.keys(M.objects).length, 10);
 });
+test('catch up inbox, prefills and replay respect the chosen actor and custom text', () => {
+  const aliceCatchup = M.parse('inbox', 'alice').state;
+  assert.equal(aliceCatchup.chapter, 'recovery');
+  assert.equal(aliceCatchup.side, 'alice');
+  assert.deepEqual(M.commands(aliceCatchup), { alice: 'inbox', bob: 'send "Please check retries."' });
+  const endAlice = { ...aliceCatchup, index: M.frames(aliceCatchup).length - 1 };
+  assert(M.history(endAlice, 'alice').some(e => e.kind === 'command' && e.text === '$ inbox'));
+  assert(M.history(endAlice, 'bob').some(e => e.kind === 'command' && e.text === '$ send "Please check retries."'));
+  assert(M.history(endAlice, 'alice').every(e => !e.text.startsWith('$ send')));
+
+  const defaultRecovery = M.create('recovery');
+  assert.equal(defaultRecovery.side, 'bob');
+  assert.deepEqual(M.commands(defaultRecovery), { alice: 'send "Please check retries."', bob: 'inbox' });
+  const endDefault = { ...defaultRecovery, index: M.frames(defaultRecovery).length - 1 };
+  assert(M.history(endDefault, 'bob').some(e => e.kind === 'command' && e.text === '$ inbox'));
+  assert(M.history(endDefault, 'alice').some(e => e.kind === 'command' && e.text === '$ send "Please check retries."'));
+
+  const customBobSend = M.parse('send "Custom Bob reply"', 'bob').state;
+  assert.equal(M.commands(customBobSend).bob, 'send "Custom Bob reply"');
+  const customAliceSay = M.parse('say "Exact Alice words"', 'alice').state;
+  assert.equal(M.commands(customAliceSay).alice, 'say "Exact Alice words"');
+});
+test('online listener message flow avoids manual inbox command while offline uses inbox', () => {
+  const online = M.create('message', 'alice', 'Hi', false);
+  const onlineEnd = { ...online, index: M.frames(online).length - 1 };
+  assert(M.history(onlineEnd, 'bob').every(e => e.text !== '$ inbox'));
+  assert(M.history(onlineEnd, 'bob').some(e => e.text.includes('Listener woke')));
+
+  const offline = M.create('message', 'alice', 'Hi', true);
+  const offlineEnd = { ...offline, index: M.frames(offline).length - 1 };
+  assert(M.history(offlineEnd, 'bob').some(e => e.kind === 'command' && e.text === '$ inbox'));
+});
+test('non-demo shortcuts and trailing arguments are rejected clearly while supported verbs work on both sides', () => {
+  for (const bad of ['listen', 'flush', 'connect', 'inbox now', 'bootstrap extra', 'help me']) {
+    for (const side of ['alice', 'bob']) {
+      assert(M.parse(bad, side).error, `expected error for ${bad} on ${side}`);
+    }
+  }
+  for (const side of ['alice', 'bob']) {
+    assert.equal(M.parse('bootstrap', side).state.chapter, 'connect');
+    assert.equal(M.parse('send "Ping"', side).state.chapter, 'message');
+    assert.equal(M.parse('say "Confirm"', side).state.chapter, 'human');
+    assert.equal(M.parse('inbox', side).state.chapter, 'recovery');
+    assert.equal(M.parse('help', side).help, true);
+  }
+});
+test('broker offline flag stays scoped to Message and key copy distinguishes fingerprint and recipients', () => {
+  assert.equal(M.create('human', 'alice', 'Hi', true).offline, false);
+  assert.equal(M.create('connect', 'alice', '', true).offline, false);
+  assert(M.frames(M.create('connect'))[1].why.includes('public-key fingerprint'));
+  assert(M.frames(M.create('human', 'alice', 'Hi'))[1].entries.some(e => e.text.includes('Alice’s agent, Bob’s agent')));
+});
+test('tutorial UI copy omits defensive guarding boilerplate', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const root = path.resolve(__dirname, '../tutorial');
+  const combined = ['index.html', 'model.js', 'app.js'].map(f => fs.readFileSync(path.join(root, f), 'utf8')).join('\n');
+  for (const phrase of [
+    'no commands run here',
+    'cannot use Touch ID',
+    'no shell, model',
+    'Browser illustration',
+    'Visual demo',
+    'in example',
+    'Approve example',
+    'Cancel example',
+  ]) {
+    assert(!combined.includes(phrase), `unexpected guarding phrase: ${phrase}`);
+  }
+});

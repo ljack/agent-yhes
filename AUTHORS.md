@@ -2,7 +2,7 @@
 
 - **Jarkko Lietolahti:** project initiator, requirements author and product
   direction. Final decisions on naming, licensing and publication belong to
-  Jarkko. The draft is not represented as his approval of every design choice.
+  Jarkko.
 - **OpenAI Codex:** AI assistance in drafting the v0.1 specification, reference
   implementation, skills, examples and validation on 2026-11-11.
   Remote Git collaboration for v0.2 was developed at Jarkko's request on 2026-11-13.
@@ -21,15 +21,21 @@
   two-person teaching view and requested GitHub Pages publication. Codex built
   the tutorial and release workflow; Claude reviewed release packaging through
   Teerminal. The version ladder preserves the earlier local, Git and secure stages.
+- **Tutorial remediation and v0.4.1 release preparation, 2026-11-16:** Grok,
+  Antigravity and Claude Code peer-reviewed v0.4.0; Antigravity implemented the
+  tutorial fixes, direct engineering copy, and dual-licensing updates under
+  Jarkko's direction.
 
 Teerminal and No More Meat Proxy were inspected as reference projects. Their
 inclusion does not imply endorsement, vendor participation or permission to
-relicense their code. The helper here was written for this proposal; reference
+relicense their code. The helper here was written for this project; reference
 source code and private state are not bundled.
 
 Jarkko selected **agent-yhes** and authorized the public repository
 [ljack/agent-yhes](https://github.com/ljack/agent-yhes). *Yhes* abbreviates Finnish
 *yhessä* → *yhdessä*, meaning "together": agents together.
 
-The license and contribution policy remain open. There is deliberately no
-placeholder LICENSE pretending a licensing decision has been made.
+Source code and documentation in this repository are dual-licensed under
+`MIT OR Apache-2.0` (see [LICENSE-MIT](LICENSE-MIT) and
+[LICENSE-APACHE](LICENSE-APACHE)). Third-party dependencies remain under their
+respective upstream licenses.

@@ -23,23 +23,21 @@ copying the setup prompt more convenient.
    registry and the two participants joining.
 2. **Message:** follow an agent message through signing, encryption, Git
    confirmation, a JetStream notice and verification by the recipient. Try Pause
-   broker in example to see the Git fallback.
-3. **Human approval:** review the example's exact words and recipients. Approve
-   example continues the illustration; Cancel example leaves it unsigned.
+   broker to see the Git fallback.
+3. **Human approval:** review the exact words and recipients. Approve & sign
+   continues the flow; Cancel leaves the statement unsigned.
 4. **Catch up:** see how an active listener and a returning agent use the saved
    history. This flow does not start a dormant model.
 5. **Get started:** choose the same-Mac simulation or the real two-person pilot.
    Follow the linked repository instructions in your own terminal.
 
-Both example terminals accept editable shortcuts, including `send "your text"`,
-`say "your text"`, `bootstrap`, `inbox` and `help`. Run animates the matching
-explanation. These are tutorial shortcuts; the linked guides contain the real
-CLI commands. Back and Replay let you inspect the same flow again.
+Both terminals accept walkthrough shortcuts (`send "your text"`, `say "your text"`,
+`bootstrap`, `inbox`, and `help`) and map them to the matching CLI commands under
+Get started. Back and Replay let you step through the same flow again.
 
-The page runs entirely in the browser. It illustrates signing, encryption and
-biometric approval; it does not run shell commands, call a model, create keys or
-send messages. The real same-Mac simulation uses disposable identities, while
-the real human-device pilot uses the native signer and Touch ID.
+The walkthrough runs locally in your browser without external dependencies. To
+execute the protocol, use the single-Mac `bin/yhes-sim` lab (disposable
+software identities) or the native `Yhes Signer` Touch ID pilot.
 
 ## Check or change the tutorial
 

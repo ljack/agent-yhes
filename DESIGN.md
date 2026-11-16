@@ -180,29 +180,29 @@ The masthead, main content and footer share a centered (1440px) maximum width an
 
 At widths of at least (1450px), the shared column becomes (210px) and gaps (48px). At widths up to (1080px), page padding becomes (20px), the shared column (150px), and diagram gaps (20px). At widths up to (780px), page padding becomes (16px), actors stack in Alice/shared/Bob reading order, shared services sit side by side, chapters form two columns, and narration and setup steps become single-column.
 
-Terminal output scrolls within a stable region (118px normally, 122px wide and 120px mobile). On mobile, a fixed compact playback bar appears only when narration is outside the viewport. It mirrors the step count, title and Back/Play/Next actions, with (42px) minimum button height, (12px) side offsets and a (10px) bottom offset. Body bottom padding is (112px). The inspector becomes a bottom panel with (12px) edge offsets and a (65dvh) maximum height.
+Terminal output scrolls within a stable region (118px normally, 122px wide and 120px mobile). Actor headings reserve a (16px) bottom margin ((14px) mobile), local tool rows use (14px) gaps ((10px) compact, (12px) mobile) and (18px) vertical row corridors ((16px) mobile), and `.world` preserves horizontal gutter padding (`18px` desktop, `14px` compact/mobile) for edge routes. On mobile, a fixed compact playback bar appears only when narration is outside the viewport and `#getting-started` is not open in view (`body.has-mobile-bar`). It mirrors the step count with active-actor cue, title and Back/Play/Next actions, with (42px) minimum button height, (12px) side offsets and a (10px) bottom offset. Body bottom padding is (112px). On mobile, the inspector becomes a bottom panel with (12px) edge offsets (`bottom: 114px` and `max-height: min(46dvh, calc(100dvh - 130px))` when the mobile playback bar is visible; `bottom: 12px` and `max-height: min(42dvh, calc(100dvh - 460px))` otherwise).
 
 ## Elevation & Depth
 
-The workspace uses tonal separation and fine borders. Active local nodes and services add a (1px) inset colored stroke to communicate state, not elevation. The inspector alone uses an ambient shadow: `0 12px 42px rgba(0,0,0,.16)` in light mode and `0 12px 42px rgba(0,0,0,.35)` in dark mode. Approval uses a native dialog with a dim backdrop.
+The workspace uses tonal separation and fine borders. Active local nodes and services add a (1px) inset colored stroke to communicate state, not elevation. The inspector adds a (3px) accent left border and ambient shadow: `0 12px 42px rgba(0,0,0,.16)` in light mode and `0 12px 42px rgba(0,0,0,.35)` in dark mode. Approval uses a native dialog with a dim backdrop.
 
-**The Flat Workspace Rule.** Use borders and tonal surfaces for diagram structure; reserve the ambient shadow for the floating inspector.
+**The Flat Workspace Rule.** Use borders and tonal surfaces for diagram structure; reserve the ambient shadow for the inspector panel.
 
 ## Shapes
 
-Control, field, panel and dialog radii are recorded in the frontmatter. The inspector uses (10px) corners and mobile playback (8px). Human avatars are (36px) circles with identity initials. Structural borders are generally (1px); terminals reserve a (2px) border for current-operation color.
+Control, field, panel and dialog radii are recorded in the frontmatter. The inspector uses (9px) corners on desktop, (10px) on mobile, and mobile playback uses (8px). Human avatars are (36px) circles with identity initials. Structural borders are generally (1px); terminals reserve a (2px) border for current-operation color.
 
-The diagram’s authored SVG icons use rounded caps and joins, generally (24px) with (1.6px) strokes; local-node icons are (21px). Route strokes are (2px), with (5px/5px) dashes for reasoning and notification. Other route segments are solid. This is explanatory geometry. The favicon is inline SVG. No raster assets ship; screenshots under `.impeccable/review/` are review evidence only.
+The diagram’s authored SVG icons use rounded caps and joins, generally (24px) with (1.6px) strokes; local-node icons are (21px). Route strokes are (2.1px) at (.86) opacity ((.68) on mobile), with (5px/5px) dashes for reasoning and notification, routed through explicit row/column corridors and outer gutters so lines stay clear of cards. Other route segments are solid. This is explanatory geometry. The favicon is inline SVG. No raster assets ship; screenshots under `.impeccable/review/` are review evidence only.
 
 ## Components
 
 ### Buttons
 
-Primary, outlined and quiet buttons share a (40px) minimum height and the control shape. Primary uses action teal, outlined uses surface and divider colors, and quiet rests transparent. Outlined and quiet hover into the soft surface; primary hover uses brightness (.93). State transitions last (.16s) with `ease`. Focus is a (3px) outline offset (4px); disabled opacity is (.42). Guide options reuse outlined buttons with accent selection and `aria-pressed`. The smaller terminal Run button uses a pale green fill, dark text and (30px) minimum height.
+Primary, outlined and quiet buttons share a (40px) minimum height and the control shape. Primary uses action teal, outlined uses surface and divider colors, and quiet rests transparent. Outlined and quiet hover into the soft surface; primary hover uses brightness (.93). State transitions last (.16s) with `ease`. Focus is a (3px) outline offset (4px); disabled opacity is (.42). Guide options reuse outlined buttons with accent selection and `aria-pressed`. The smaller terminal Run button uses a pale green fill, dark text and (30px) minimum height ((34px) on narrow or coarse-pointer screens); terminal shortcut fill buttons maintain at least (26px) height/width ((32px) height on narrow/coarse-pointer screens), and standalone footer/guide links use (28px) minimum height.
 
 ### Inputs / Fields
 
-Terminal inputs sit in a dark outlined row with prompt and Run action. Input text is monospace, transparent and borderless; its keyboard outline has a (1px) offset and its caret is pale blue. Inline status explains invalid input. Help buttons fill the field and return focus. The HTML limit is (280 characters); example message text is limited to (240 characters). Commands animate an illustration.
+Terminal inputs sit in a dark outlined row with prompt and Run action. Input text is monospace, transparent and borderless; its keyboard outline has a (1px) offset and its caret is pale blue. Inline status explains invalid input. Help buttons fill the field and return focus. The HTML limit is (280 characters); message text is limited to (240 characters). Commands animate the walkthrough; both terminals stay synced with the active story and preserve custom input on Replay.
 
 ### Navigation
 
@@ -210,7 +210,7 @@ Four numbered chapters expose meaningful sequence. The current chapter uses ink 
 
 ### Actors and services
 
-Local nodes combine authored SVG, a name and supporting role. Their hover and selected states use the owner’s pale fill and border. Active state adds an inset stroke and stronger icon and name color. Shared services are neutral at rest, accented when active, and amber with dashed outline when the broker is paused. Inspection pauses playback and focuses Close; Close or Escape returns focus to the original node.
+Local nodes combine authored SVG, a name and supporting role. Their hover and selected states use the owner’s pale fill and border. Active state adds an inset stroke and stronger icon and name color. Each inspectable button exposes `aria-expanded` and `aria-controls="inspector"`. Shared services are neutral at rest, accented when active, and amber with dashed outline when the broker is paused or unavailable; the broker pause toggle is shown only in the Message chapter. Inspection pauses playback and focuses Close; toggling the open object, Close, or Escape closes it and returns focus (scrolling into view if needed) to the original node.
 
 ### Terminals
 
@@ -224,11 +224,11 @@ Autoplay advances every (3100ms), stopping at chapter completion or the human-re
 
 ### Inspector and approval
 
-The nonmodal inspector presents the owner, object role, explanation and Why. Desktop width is (340px), positioned (24px) from the right and (88px) from the top. The modal approval example preserves exact words, author and audience, focuses Cancel first, and restores focus to its opener. Cancellation preserves the review gate; approval advances the illustration.
+On desktop, the nonmodal inspector docks inline between narration and the diagram as a two-column (`1.35fr` / `1fr`) panel so readers can inspect an object while stepping through playback; on mobile it sits above the compact playback bar (or bottom edge when hidden). The modal approval dialog preserves exact words, author and agent recipients (`Alice’s agent, Bob’s agent`), focuses Cancel first, contains backdrop scroll, and restores focus to its opener. Cancellation preserves the review gate; approval advances the flow.
 
 ### Getting started
 
-An explicit reveal control opens setup. Two outlined options choose simulation or two-person instructions. Ordered steps remain plain content. A tonal monospace block holds the copyable prompt; clipboard failure selects the prompt for manual copying and announces the fallback.
+An explicit reveal control opens setup. Two outlined options choose simulation or two-person instructions, with a fragment-preserving link to `BOOTSTRAP.md#prepare-a-pair-once` and an expandable shortcut-to-CLI reference table (`details.cli-map`). Ordered steps remain plain content. A tonal monospace block holds the copyable prompt; clipboard failure selects the prompt for manual copying and announces the fallback.
 
 ## Do's and Don'ts
 

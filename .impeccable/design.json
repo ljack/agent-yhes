@@ -553,12 +553,12 @@
       {
         "name": "inspector-light",
         "value": "0 12px 42px rgba(0,0,0,.16)",
-        "purpose": "Floating explanation in light theme."
+        "purpose": "Docked desktop or floating mobile object explanation in light theme."
       },
       {
         "name": "inspector-dark",
         "value": "0 12px 42px rgba(0,0,0,.35)",
-        "purpose": "Floating explanation in dark theme."
+        "purpose": "Docked desktop or floating mobile object explanation in dark theme."
       }
     ],
     "motion": [

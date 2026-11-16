@@ -5,9 +5,9 @@ with OpenMLS as the first candidate for a constrained integration prototype.**
 Keep mls-rs as the alternative. Preserve the separate GHES identity, human/agent
 delegation, Touch ID approval and signed application-event layer in either case.
 
-This chooses a protocol direction and a next experiment. The current v0.3 runtime
-has not acquired E2EE or cryptographic author verification. Version commits and
-tags remain on hold.
+This chooses a protocol direction and a next experiment. At the evaluation date
+(2026-11-13), the v0.3 runtime had not yet integrated E2EE or cryptographic author
+verification; source releases are listed in [RELEASES.md](RELEASES.md).
 
 ## Why MLS fits this project
 
@@ -32,8 +32,8 @@ project membership and authorization layer. [Pinned libsignal README](https://gi
 | **libsignal 0.107.0** | Pairwise messaging and existing Swift/TypeScript APIs. | External use is unsupported; the tested sender-key primitive leaves group membership/rekey policy to the application. |
 
 The checked metadata identifies OpenMLS as MIT, mls-rs as Apache-2.0 OR MIT, and
-libsignal as AGPL-3.0-only. These are dependency facts, not a project licensing
-decision. The repository's own license remains undecided.
+libsignal as AGPL-3.0-only. At the time of evaluation the repository license was
+open; the repository is now dual-licensed under `MIT OR Apache-2.0`.
 
 ## What ran
 

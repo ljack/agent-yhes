@@ -1,5 +1,19 @@
 # Changes
 
+## 0.4.1 — tutorial fixes, direct documentation and dual licensing, 2026-11-16
+
+- Make `Catch up`, `Connect` and terminal prefills actor-aware, preserve custom
+  inputs on `Replay`, and separate online listener wake-up from explicit `inbox`
+  catch-up.
+- Dock the desktop object inspector between narration and the diagram, keep the
+  mobile inspector clear of playback controls, hide mobile playback while viewing
+  `Get started`, and route SVG connectors through explicit row/column corridors.
+- Scope the broker pause toggle to `Message`, preserve `#prepare-a-pair-once`
+  anchors in the Pages build, add a walkthrough-to-CLI command mapping table,
+  and remove defensive disclaimer copy across the tutorial and documentation.
+- License repository source code and documentation under `MIT OR Apache-2.0`
+  ([`LICENSE-MIT`](LICENSE-MIT) and [`LICENSE-APACHE`](LICENSE-APACHE)).
+
 ## 0.4.0 — interactive tutorial and GitHub Pages, 2026-11-16
 
 - Add two editable example terminals and animated Connect, Message, Human approval

@@ -32,10 +32,8 @@ implemented Git-first ordering, human/agent provenance and exact human approval.
 An active listener can wake; a dormant model is not started by the protocol.
 The current same-Mac lab simulates human consent using disposable keys.
 
-The web page is an illustrative walkthrough, not a shell, live lab dashboard,
-cryptographic implementation or biometric authenticator. No credentials, keys
-or real participant messages are requested. Author-created example content is
-labelled as a visual demo.
+The tutorial is a static client-side diagram with scripted state transitions;
+runnable workflows live in `bin/yhes-sim` and `bin/yhes`.
 
 ## Evidence
 

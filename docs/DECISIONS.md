@@ -5,9 +5,8 @@
 The first version starts on one machine in one project. Use `.agents/tickets` for durable work and
 `.agents/messages` for both memory and active coordination. Keep the common
 agreement independent of the harness. Make a small skill-driven trial possible.
-Prepare a public proposal with Jarkko's role visible. Jarkko subsequently chose
-**agent-yhes** and authorized publication at **ljack/agent-yhes**. The license
-remains open.
+Jarkko chose **agent-yhes**, authorized publication at **ljack/agent-yhes**, and
+selected **MIT OR Apache-2.0** dual licensing.
 
 For v0.2, Jarkko requested remote Git collaboration so participants on different
 computers, using different harnesses, and humans can share the work. The
@@ -51,10 +50,10 @@ no nested project or workspace rename is needed. The initial `main` contains
 the public v0.1 proposal, skills, examples, helper and tests. Private Teerminal
 tickets, runtime state, caches and local archives are excluded.
 
-Publication invites feedback on the draft; it does not imply vendor adoption,
-native harness integration or a finalized protocol. Licensing remains a separate
-decision. Version tags were subsequently authorized by Jarkko and are listed in
-[RELEASES.md](RELEASES.md). No license or global skill installation is implied.
+The repository does not imply vendor adoption or native harness integration.
+Version tags are listed in [RELEASES.md](RELEASES.md), and repository source
+and documentation are licensed under [MIT](../LICENSE-MIT) OR
+[Apache-2.0](../LICENSE-APACHE). No global skill installation is implied.
 
 ## Remote profile choices in v0.2
 
@@ -90,7 +89,7 @@ future extensions.
 
 ## Open questions before a broader version
 
-1. Code/documentation license and contribution policy.
+1. External contributor workflow and CLA policy (repository license is `MIT OR Apache-2.0`).
 2. Native Windows support and Linux verification for the remote helper.
 3. Whether 15-minute claims and one-hour live messages fit real harness turns.
 4. Which trusted adapter can prove a worker and its children stopped for recovery.

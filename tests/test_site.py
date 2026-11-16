@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from build_site import build, OUTPUTS
+from build_site import OUTPUTS, ROOT, build, resolve_guide_url
 
 
 class Links(HTMLParser):
@@ -31,6 +31,8 @@ class SiteTests(unittest.TestCase):
             guides = [p for p in parser.links if p.startswith("https:")]
             self.assertEqual(len(guides), 6)
             self.assertTrue(all(p.startswith(f"https://github.com/ljack/agent-yhes/blob/{revision}/") for p in guides))
+            self.assertIn(f"https://github.com/ljack/agent-yhes/blob/{revision}/BOOTSTRAP.md#prepare-a-pair-once", guides)
+            self.assertIn("\n## Prepare a pair once\n", (ROOT / "BOOTSTRAP.md").read_text())
             for link in parser.links:
                 if not link.startswith(("https:", "data:", "#")):
                     self.assertFalse(link.startswith(("/", "..")), link)
@@ -39,6 +41,17 @@ class SiteTests(unittest.TestCase):
             before = {p.name: p.read_bytes() for p in output.iterdir()}
             build(output, revision=revision)
             self.assertEqual(before, {p.name: p.read_bytes() for p in output.iterdir()})
+
+    def test_guide_fragments_keep_allowlist_and_syntax_checks(self):
+        revision = "b" * 40
+        self.assertEqual(
+            resolve_guide_url("BOOTSTRAP.md#prepare-a-pair-once", revision=revision),
+            f"https://github.com/ljack/agent-yhes/blob/{revision}/BOOTSTRAP.md#prepare-a-pair-once",
+        )
+        for bad in ("VERSION#x", "BOOTSTRAP.md#", "BOOTSTRAP.md#a#b", "BOOTSTRAP.md?x=1#prepare-a-pair-once"):
+            with self.subTest(bad=bad):
+                with self.assertRaises(ValueError):
+                    resolve_guide_url(bad, revision=revision)
 
     def test_unrelated_output_and_symlinks_are_not_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -6,8 +6,9 @@ proposals, founder-approved membership, secure Git publication and NATS-triggere
 receipt after Git confirmation. Disposable independent-client tests exercise
 real Git and NATS; hosted GHES and actual two-Mac enrollment remain pending.
 The local human enrollment and actual Codex–Claude trial succeeded on 14 November;
-see [validation](VALIDATION.md). The earlier updates below record their state at
-the time. Commits/tags remain on hold.
+see [validation](VALIDATION.md). Source releases are tracked in
+[RELEASES.md](RELEASES.md) under `MIT OR Apache-2.0`; the dated notes below
+preserve earlier milestone snapshots.
 
 **Usable-pilot update, 2026-11-14:** [the signed local client](LOCAL-PILOT.md) now
 connects setup, native approval, encrypted delivery and inbox/status commands.
@@ -15,8 +16,8 @@ It includes authenticated local IPC and a sealed local-log adapter. Provisioning
 signed peer authentication and a disposable production Keychain probe were
 verified. The first real human enrollment request timed out before approval;
 successful human signing and cross-harness use still need manual acceptance.
-Secure Git/NATS, secure ticket execution and historical-admission evidence remain
-later integration work. Existing version commits/tags remain on hold.
+Secure Git/NATS, secure ticket execution and historical-admission evidence were
+recorded as later integration work at that milestone.
 
 **Implementation update, 2026-11-14:** the event/action verifier, private
 transactional MLS core, macOS signer prototype and GHES proof adapter are now
@@ -49,7 +50,7 @@ The recommended implementation choices are MLS/OpenMLS for group encryption,
 a Rust service owning private state, and the existing Python Git/NATS transport
 behind an opaque-record boundary. The proposed 30-minute signing window and
 five-minute inactivity timeout remain policy defaults to review, not user-fixed
-requirements. Project licensing remains undecided. Commits/tags remain on hold.
+requirements. (Repository licensing has since been set to `MIT OR Apache-2.0`.)
 
 ## Experiment results
 

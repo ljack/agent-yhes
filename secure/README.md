@@ -11,7 +11,8 @@ The [team CLI pilot](../docs/TEAM-PILOT.md) adds two-person enrollment through G
 and NATS-triggered delivery of Git-confirmed encrypted messages. Its independent
 client tests use disposable identities; hosted GHES and two-Mac acceptance remain
 pending. The Python helpers still use the earlier record format. Secure ticket
-execution remains separate work; no release has been tagged.
+execution remains separate work; source releases are listed in
+[RELEASES.md](../docs/RELEASES.md).
 
 ## Try the acceptance tests
 
@@ -107,7 +108,7 @@ local user programs access to its approved agent profiles; it does not attest
 which harness process authored a request.
 The full-state MAC scan is intentionally simple and intended for small trials.
 
-## Gates before a secure v0.3 release
+## Remaining gates beyond the v0.3 pilot
 
 - Complete hosted, two-Mac acceptance of the new Git/NATS team CLI. Its Git
   adapter reads back exact sealed records and checks protected history before
@@ -131,4 +132,4 @@ The full-state MAC scan is intentionally simple and intended for small trials.
 
 These gates are recorded work, not switches that loosen verification. The older
 helpers remain useful for trusted-participant experiments while this integration
-is completed. Commits, tags and publication remain on hold under the existing plan.
+is completed.

@@ -1,4 +1,27 @@
-# Validation of this draft
+# Validation
+
+## v0.4.1 release checks — 2026-11-16
+
+Before preparing the `v0.4.1` release locally, the updated tree passed:
+
+- **166** Rust workspace tests (`--workspace --locked -- --test-threads=1`), with
+  the **2** opt-in `realtime_git` NATS/TLS tests ignored because `nats-server` /
+  `YHES_NATS_SERVER` was not configured in this pass.
+- **12** `yhes_sim` simulator example tests and strict `--workspace --all-targets --locked -- -D warnings` Clippy.
+- **104** native Swift tests via `native/YhesSigner/scripts/test.sh` (plus **3**
+  Rust `yhes-wire-ffi` bridge tests).
+- **8** GHES adapter fixture tests (`secure/identity`).
+- **44** Python tests passed in `tests/` (**13** broker/process-simulator tests
+  skipped without `nats-server` / `YHES_SIM_NATS_SERVER`), including **3** Pages
+  site-packaging and `#prepare-a-pair-once` anchor tests.
+- **13** tutorial model and copy checks (`tests/test_tutorial.cjs`), headless
+  Playwright Chromium desktop (`1440×900`) and mobile (`390×844`) sweeps across
+  light/dark themes and `prefers-reduced-motion: reduce`, `tools/build_site.py`
+  (`dist/site` built with `version: "0.4.1"`), `actionlint`, and relative link
+  checks across **46** Markdown files (`0` broken).
+
+These checks do not alter the physical second-Mac, hosted GHES, or `nats-server`
+boundaries noted below.
 
 ## Source release checks — 2026-11-16
 
@@ -466,6 +489,7 @@ project was rebuilt or deployed as part of this validation.
 
 ## Publication status
 
-Jarkko selected the name **agent-yhes** and authorized publication of this draft
-at [ljack/agent-yhes](https://github.com/ljack/agent-yhes). That publication does
-not change the validation limits above. License selection remains open.
+`agent-yhes` is published at [ljack/agent-yhes](https://github.com/ljack/agent-yhes)
+under `MIT OR Apache-2.0` ([LICENSE-MIT](../LICENSE-MIT),
+[LICENSE-APACHE](../LICENSE-APACHE)). Publication does not alter the validation
+boundaries above.

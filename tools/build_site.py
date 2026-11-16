@@ -17,6 +17,17 @@ GUIDES = {
 }
 
 
+def resolve_guide_url(raw, repository="ljack/agent-yhes", revision="main"):
+    """Validate an allowlisted repository guide path and optional anchor fragment."""
+    path, sep, fragment = raw.partition("#")
+    if path not in GUIDES or not (ROOT / path).is_file():
+        raise ValueError(f"unknown or missing guide: {path}")
+    if sep and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", fragment):
+        raise ValueError(f"invalid guide fragment: {fragment}")
+    suffix = f"#{fragment}" if sep else ""
+    return f"https://github.com/{repository}/blob/{quote(revision, safe='')}/{path}{suffix}"
+
+
 def build(output, repository="ljack/agent-yhes", revision="main"):
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise ValueError("repository must be owner/name")
@@ -35,11 +46,7 @@ def build(output, repository="ljack/agent-yhes", revision="main"):
     html = (source / "index.html").read_text()
 
     def guide(match):
-        path = match[1]
-        if path not in GUIDES or not (ROOT / path).is_file():
-            raise ValueError(f"unknown or missing guide: {path}")
-        url = f"https://github.com/{repository}/blob/{quote(revision, safe='')}/{path}"
-        return f'href="{escape(url, quote=True)}"'
+        return f'href="{escape(resolve_guide_url(match[1], repository, revision), quote=True)}"'
 
     html = re.sub(r'href="\.\./([^"]+)"', guide, html)
     if 'href="../' in html or 'src="../' in html:
