@@ -1,9 +1,16 @@
 ---
 name: local-agent-tickets
-description: Discover, claim, renew, hand off and complete shared project tickets through local files, a remote Git channel. Use for an opted-in agent-yhes project, including collaboration across computers and human review; not for unrelated issue trackers or automatic agent launching.
+description: Discover, claim, renew, hand off and complete shared project tickets through local files, a remote Git channel or v0.3 realtime notifications. Use for an opted-in agent-yhes project, including collaboration across computers and human review; not for unrelated issue trackers or automatic agent launching.
 ---
 
 # Shared project tickets
+
+If the user selected the secure team workflow (`team-*`) or the project uses
+the signed local pilot (`.agents/messages/secure`), use
+[the messaging skill's secure flow](../local-agent-messages/SKILL.md) to coordinate.
+Secure ticket execution is not implemented in this pilot. Do not create or mutate
+legacy plaintext tickets there as a fallback; keep any task status explicitly
+described as a message until a secure ticket executor is available.
 
 Read [the specification](../../spec/v0.1.md), particularly ownership and trust.
 For a remote channel also read [v0.2](../../spec/v0.2.md). Use
@@ -46,6 +53,14 @@ Commands publish protocol changes to that remote, while source edits remain in
 the ordinary source checkout. Confirm that channel publication is within the
 user's remit before joining. Give human participants the
 [remote walkthrough](../../examples/REMOTE-WALKTHROUGH.md).
+
+For a configured v0.3 broker, use [realtime.py](../../tools/realtime.py) in place
+of `remote.py`; its Git commands and result fields have the same meaning. Read
+[the broker guide](../../docs/BROKER.md) and [v0.3](../../spec/v0.3.md). A
+`channel.changed` notification prompts a current ticket/inbox read; it never
+assigns ownership. `delivery: confirmed` concerns Git, while `realtime.state`
+concerns notification storage. If notifications are pending, use `flush` without
+repeating the confirmed task operation.
 
 ## Own and advance work
 

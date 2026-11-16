@@ -1,0 +1,5 @@
+#!/bin/sh
+# Disposable simulation runner; never selects providers in the signed yhes app.
+set -eu
+yhes_sim_toolkit=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+exec python3 "$yhes_sim_toolkit/tools/simulation.py" "$@"

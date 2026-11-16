@@ -1,0 +1,16 @@
+[package]
+name = "yhes-wire-ffi"
+description = "Bounded public-key validation bridge for the native yhes signer"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+crate-type = ["staticlib", "rlib"]
+
+[dependencies]
+yhes-wire = { path = "../yhes-wire" }
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"

@@ -1,0 +1,106 @@
+{
+  "experiment": "OpenMLS transactional adapter",
+  "version": "0.9.2",
+  "results": [
+    {
+      "suite": "ed25519",
+      "checks": {
+        "invalid_welcome_preserves_durable_state": true,
+        "killed_join_rolls_back_key_consumption": true,
+        "killed_send_before_commit_has_no_partial_state_or_outbox": true,
+        "killed_send_after_commit_reuses_exact_ciphertext": true,
+        "changed_request_cannot_reuse_operation_id": true,
+        "lost_git_ack_resolves_without_reencrypt_or_second_commit": true,
+        "invalid_ciphertext_preserves_durable_receiver_state": true,
+        "killed_receiver_after_commit_replays_durable_inbox": true,
+        "pending_membership_blocks_new_sends": true,
+        "concurrent_membership_has_one_git_winner": true,
+        "loser_discards_pending_and_consumes_winner": true,
+        "rebuilt_membership_converges_four_independent_databases": true,
+        "rejected_old_membership_attempt_cannot_replay": true,
+        "unsent_old_epoch_ciphertext_requires_new_authorized_attempt": true,
+        "messaging_continues_after_membership_race": true,
+        "known_accepted_send_missing_from_restored_db_quarantines_client": true,
+        "git_contains_only_ciphertext_and_explicit_public_metadata": true,
+        "rejected_and_unreachable_git_objects_have_no_fixture_plaintext_or_private_state": true
+      },
+      "git_race_winner": "bob",
+      "final_epoch": 3,
+      "members_after_rebuild": 4,
+      "process_termination": "SIGKILL at explicit boundaries",
+      "storage": "SQLite WAL/FULL with disposable plaintext fixture secrets",
+      "scope": "No real identity, Touch ID, hardware power-loss or complete anti-rollback proof"
+    },
+    {
+      "suite": "p256",
+      "checks": {
+        "invalid_welcome_preserves_durable_state": true,
+        "killed_join_rolls_back_key_consumption": true,
+        "killed_send_before_commit_has_no_partial_state_or_outbox": true,
+        "killed_send_after_commit_reuses_exact_ciphertext": true,
+        "changed_request_cannot_reuse_operation_id": true,
+        "lost_git_ack_resolves_without_reencrypt_or_second_commit": true,
+        "invalid_ciphertext_preserves_durable_receiver_state": true,
+        "killed_receiver_after_commit_replays_durable_inbox": true,
+        "pending_membership_blocks_new_sends": true,
+        "concurrent_membership_has_one_git_winner": true,
+        "loser_discards_pending_and_consumes_winner": true,
+        "rebuilt_membership_converges_four_independent_databases": true,
+        "rejected_old_membership_attempt_cannot_replay": true,
+        "unsent_old_epoch_ciphertext_requires_new_authorized_attempt": true,
+        "messaging_continues_after_membership_race": true,
+        "known_accepted_send_missing_from_restored_db_quarantines_client": true,
+        "git_contains_only_ciphertext_and_explicit_public_metadata": true,
+        "rejected_and_unreachable_git_objects_have_no_fixture_plaintext_or_private_state": true
+      },
+      "git_race_winner": "alice",
+      "final_epoch": 3,
+      "members_after_rebuild": 4,
+      "process_termination": "SIGKILL at explicit boundaries",
+      "storage": "SQLite WAL/FULL with disposable plaintext fixture secrets",
+      "scope": "No real identity, Touch ID, hardware power-loss or complete anti-rollback proof"
+    }
+  ],
+  "native_provider_results": [
+    {
+      "checks": {
+        "committed_state_and_ciphertext_survive_database_reopen": true,
+        "invalid_welcome_rolls_back": true,
+        "provider_and_application_share_transaction": true,
+        "receiver_state_and_payload_commit_together": true,
+        "sender_state_and_outbox_rollback_together": true,
+        "valid_join_after_failed_attempt": true
+      },
+      "provider": "openmls_sqlite_storage 0.3.0",
+      "sqlite_version": "3.50.2",
+      "suite": "ed25519"
+    },
+    {
+      "checks": {
+        "committed_state_and_ciphertext_survive_database_reopen": true,
+        "invalid_welcome_rolls_back": true,
+        "provider_and_application_share_transaction": true,
+        "receiver_state_and_payload_commit_together": true,
+        "sender_state_and_outbox_rollback_together": true,
+        "valid_join_after_failed_attempt": true
+      },
+      "provider": "openmls_sqlite_storage 0.3.0",
+      "sqlite_version": "3.50.2",
+      "suite": "p256"
+    }
+  ],
+  "evaluated_on": "2026-11-13",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "python_sqlite_version": "3.53.4",
+  "rust": "rustc 1.92.0 (ded5c06cf 2025-12-08)",
+  "all_checks_passed": true,
+  "source_sha256": {
+    "atomic/adapter.py": "2671592487d947ace7058d5a1e6a10666d937b18a606f1d03786f1aba92bdf98",
+    "atomic/git_fixture.py": "349b0ed4d4f1fcf1ba242958ae354fa9508e99c4b83288f306ba8e3f2fc04d8f",
+    "atomic/run_experiment.py": "10d61b03d627fdc02a328c6a63c58042780770a7228d2899ea4bb766b1967c47",
+    "atomic/run_all.py": "466bd4f2a02e68357281663e97e87a1f4d3bacb2cd7defac0752f64382ed8ec0",
+    "rust/src/worker.rs": "fb314aa366667e32b95247a5a3f7753898cebb10e5324d9e30acd9f84f06b006",
+    "rust/src/sqlite_provider.rs": "6836a39eda0ffed8c0b66a719ce08b0061d29e718b0f0b7a93e67ff94363e627",
+    "rust/Cargo.lock": "7eda9c5bc38950afdc9232f0f2dcb7534f00443ed8fae0db3a9172c4dd29f3ae"
+  }
+}

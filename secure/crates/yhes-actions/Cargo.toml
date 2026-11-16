@@ -1,0 +1,20 @@
+[package]
+name = "yhes-actions"
+description = "Strict typed parsing and verification of agent-yhes action request sidecars"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json = { workspace = true, features = ["raw_value"] }
+thiserror.workspace = true
+yhes-wire = { path = "../yhes-wire" }
+
+[dev-dependencies]
+base64.workspace = true
+ed25519-dalek = { version = "2.2", default-features = false, features = ["std"] }
+
+[lints.rust]
+unsafe_code = "forbid"

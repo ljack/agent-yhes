@@ -1,0 +1,138 @@
+{
+  "evaluated_on": "2026-11-13",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "rust": "rustc 1.92.0 (ded5c06cf 2025-12-08)",
+  "node": "v26.13.0",
+  "openssl": "3.6.4",
+  "scope": "Disposable-key API behavior probes. No real human identity, hardware signing, protocol proof, audit or network interoperability test.",
+  "cases": [
+    {
+      "checks": {
+        "duplicate_rejected": true,
+        "late_joiner_cannot_read_past": true,
+        "multi_recipient": true,
+        "out_of_order": true,
+        "outsider_rejected": true,
+        "provider_state_reload": true,
+        "remaining_members_continue": true,
+        "removed_member_cannot_read_future": true,
+        "tamper_rejected_without_poisoning": true
+      },
+      "identity": "unverified basic credentials; no GHE/Touch ID test",
+      "implementation": "openmls",
+      "suite": "MLS_128_DHKEMX25519_AES128GCM_SHA256_Ed25519",
+      "version": "0.9.2",
+      "welcome_observation": {
+        "checkpoint_restore": "verified",
+        "invalid_welcome_error": "GroupSecrets(DecryptionFailed)",
+        "valid_retry_error": "NoMatchingKeyPackage",
+        "valid_welcome_after_invalid": false
+      }
+    },
+    {
+      "checks": {
+        "duplicate_rejected": true,
+        "late_joiner_cannot_read_past": true,
+        "multi_recipient": true,
+        "out_of_order": true,
+        "outsider_rejected": true,
+        "provider_state_reload": true,
+        "remaining_members_continue": true,
+        "removed_member_cannot_read_future": true,
+        "tamper_rejected_without_poisoning": true
+      },
+      "identity": "unverified basic credentials; no GHE/Touch ID test",
+      "implementation": "openmls",
+      "suite": "MLS_128_DHKEMP256_AES128GCM_SHA256_P256",
+      "version": "0.9.2",
+      "welcome_observation": {
+        "checkpoint_restore": "verified",
+        "invalid_welcome_error": "GroupSecrets(DecryptionFailed)",
+        "valid_retry_error": "NoMatchingKeyPackage",
+        "valid_welcome_after_invalid": false
+      }
+    },
+    {
+      "checks": {
+        "duplicate_rejected": true,
+        "late_joiner_cannot_read_past": true,
+        "multi_recipient": true,
+        "out_of_order": true,
+        "outsider_rejected": true,
+        "provider_state_reload": true,
+        "remaining_members_continue": true,
+        "removed_member_cannot_read_future": true,
+        "tamper_rejected_without_poisoning": false
+      },
+      "identity": "unverified basic credentials; no GHE/Touch ID test",
+      "implementation": "mls-rs",
+      "observations": {
+        "application_checkpoint_restore_recovers": true,
+        "invalid_message_error": "CryptoProviderError(AnyError(AeadError(AnyError(OpensslError(ErrorStack([]))))))",
+        "valid_retry_error": "KeyMissing(1)"
+      },
+      "provider": "OpenSSL 0.22.0",
+      "suite": "CipherSuite(1)",
+      "version": "0.57.1",
+      "welcome_observation": {
+        "invalid_welcome_error": "CryptoProviderError(AnyError(HpkeError(AeadError(AnyError(OpensslError(ErrorStack([])))))))",
+        "valid_retry_error": null,
+        "valid_welcome_after_invalid": true
+      }
+    },
+    {
+      "checks": {
+        "duplicate_rejected": true,
+        "late_joiner_cannot_read_past": true,
+        "multi_recipient": true,
+        "out_of_order": true,
+        "outsider_rejected": true,
+        "provider_state_reload": true,
+        "remaining_members_continue": true,
+        "removed_member_cannot_read_future": true,
+        "tamper_rejected_without_poisoning": false
+      },
+      "identity": "unverified basic credentials; no GHE/Touch ID test",
+      "implementation": "mls-rs",
+      "observations": {
+        "application_checkpoint_restore_recovers": true,
+        "invalid_message_error": "CryptoProviderError(AnyError(AeadError(AnyError(OpensslError(ErrorStack([]))))))",
+        "valid_retry_error": "KeyMissing(1)"
+      },
+      "provider": "OpenSSL 0.22.0",
+      "suite": "CipherSuite(2)",
+      "version": "0.57.1",
+      "welcome_observation": {
+        "invalid_welcome_error": "CryptoProviderError(AnyError(HpkeError(AeadError(AnyError(OpensslError(ErrorStack([])))))))",
+        "valid_retry_error": null,
+        "valid_welcome_after_invalid": true
+      }
+    },
+    {
+      "implementation": "libsignal",
+      "version": "0.107.0",
+      "mode": "sender-key group primitive",
+      "checks": {
+        "multi_recipient": true,
+        "outsider_rejected": true,
+        "duplicate_rejected": true,
+        "tamper_rejected_without_poisoning": true,
+        "out_of_order": true,
+        "late_joiner_cannot_read_past": true,
+        "removed_member_cannot_read_future_after_app_rekey": true,
+        "remaining_members_continue": true,
+        "provider_state_reload": true
+      },
+      "observations": {
+        "membership_list_alone_does_not_revoke_sender_key": true,
+        "application_must_rekey": true
+      },
+      "identity": "trusted in-memory distribution fixture; no pairwise session, GHE or Touch ID test"
+    }
+  ],
+  "probe_sha256": {
+    "evaluations/e2ee/rust/src/openmls.rs": "c1284b12fc2479f3c4a0c65b44bb4282ce95bc136b6fcf888832b8d5ab2fb7b0",
+    "evaluations/e2ee/rust/src/mlsrs.rs": "edd7e1e9c741a005a4d3a343c9fdf84a9040a9d19f01924d143305bada70c9c9",
+    "evaluations/e2ee/signal/probe.mjs": "365c324b25677433bd724e9f1d815261162788e9358ea40a295336ed7c163d7a"
+  }
+}

@@ -5,3 +5,4 @@ __pycache__/
 /.teerminal-intake-owner
 /.agents/
 /dist/
+/local-pilot/

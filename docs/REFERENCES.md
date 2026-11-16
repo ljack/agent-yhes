@@ -70,3 +70,36 @@ interface and same-filesystem atomic
 [`os.fsync`](https://docs.python.org/3/library/os.html#os.fsync) for flush requests.
 Atomic replacement and cooperative locks do not provide a source-code sandbox
 or universal power-loss durability.
+
+## Realtime broker reference, 2026-11-13
+
+The local reference inventory found **Branchline** at `~/_dev/branchline` and
+**Together** at `~/_dev/together-app`. Branchline's README, deployment guide,
+protocol and `branchline/relay.py` were inspected. Its source implements an
+optional authenticated relay, bounded subscriber queues and an SSE stream;
+its protocol/deployment guide retains Git verification and fallback. The
+inspection informed the separation between live delivery and durable authority.
+Branchline's signed envelope and relay wire format are distinct from agent-yhes.
+
+The Together file `tests/support/reference_broker.py` explicitly identifies
+itself as a non-canonical test double. It was not treated as a production broker
+or copied into this implementation. Neither reference project was modified or
+started for this work.
+
+Branchline HEAD at inspection: `fefb37a130412907a1a4e47d806be0f5446724cb`.
+The actual read-file SHA-256 values are:
+
+```text
+branchline/relay.py
+034fb105a0637c015958d1a7b8ef609ebdf384f55b8a53de84305b8352f6d750
+docs/PROTOCOL.md
+d430c9ee5f3cf42a9eb8ef251e53c4c16ee3b5b8453f16aff412d4736b06847c
+deploy/README.md
+6d825d2ef401be31cfb9084a5ff32148ece77caa08dda6fa010fae37a010452d
+```
+
+The selected broker is the independent NATS project. The implementation uses
+the official Python client and was exercised against NATS Server 2.15.3. The
+downloaded server archive was checked against its published SHA-256 sum. See
+[the broker guide](BROKER.md#server-protocol-and-client-references) for the
+server, wire protocol, JetStream, authentication, TLS and client references.

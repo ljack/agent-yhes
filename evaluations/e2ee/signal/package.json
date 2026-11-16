@@ -1,0 +1,12 @@
+{
+  "name": "yhes-signal-evaluation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@signalapp/libsignal-client": "0.107.0"
+  },
+  "scripts": {
+    "probe": "node probe.mjs"
+  }
+}

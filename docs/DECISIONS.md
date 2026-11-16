@@ -2,12 +2,20 @@
 
 ## Established by Jarkko's request
 
-Start on one machine in one project. Use `.agents/tickets` for durable work and
+The first version starts on one machine in one project. Use `.agents/tickets` for durable work and
 `.agents/messages` for both memory and active coordination. Keep the common
 agreement independent of the harness. Make a small skill-driven trial possible.
 Prepare a public proposal with Jarkko's role visible. Jarkko subsequently chose
 **agent-yhes** and authorized publication at **ljack/agent-yhes**. The license
 remains open.
+
+For v0.2, Jarkko requested remote Git collaboration so participants on different
+computers, using different harnesses, and humans can share the work. The
+[v0.2 specification](../spec/v0.2.md) defines the implemented remote profile.
+
+For v0.3, Jarkko requested a realtime broker layer, including server/specification
+references and usage instructions. He delegated the choice of broker. The
+implementation uses NATS JetStream as described in [v0.3](../spec/v0.3.md).
 
 The technical choices below are **design proposals**, not additional user
 decisions. The project name and publication destination are explicit user choices.
@@ -45,12 +53,45 @@ tickets, runtime state, caches and local archives are excluded.
 
 Publication invites feedback on the draft; it does not imply vendor adoption,
 native harness integration or a finalized protocol. Licensing remains a separate
-decision. No license, release tag or global skill installation is implied.
+decision. Version tags were subsequently authorized by Jarkko and are listed in
+[RELEASES.md](RELEASES.md). No license or global skill installation is implied.
+
+## Remote profile choices in v0.2
+
+Use one dedicated coordination branch as the serialization point. A successful
+remote operation establishes ownership; a local candidate remains pending.
+Reapply independent requests after contention, while preserving ticket revision
+checks. Save immutable operation receipts so a dropped push acknowledgment can
+be resolved without repeating the logical operation. The source checkout and
+its index remain separate from this transport.
+
+Human participants use the same commands and can review tasks. Shared receipts
+and session continuation let them or agents move to another computer. Expired
+claims retain the conservative recovery rule; remote recovery requires a human
+to record stop and reconciliation evidence.
+
+Git host permissions control channel access. This v0.2 profile assumes
+cooperating repository members. The separate secure implementation added in
+v0.3 supplies signed identities and encrypted groups; it does not turn v0.2
+records into authenticated secure events.
+
+## Broker profile choices in v0.3
+
+NATS JetStream supplies storage acknowledgments, durable consumers and replay.
+The broker carries channel-change hints while Git remains the authority for
+records and claims. This keeps one task state and lets existing v0.2 clients
+continue participating. Git publication latency remains part of the send path.
+
+The first broker deployment is a single persistent server with token
+authentication, and verified TLS for connections between computers. It serves
+one trusted group per server/account. Separate groups need NATS account/subject
+permissions. Native harness wake-up and broker-first message storage are separate
+future extensions.
 
 ## Open questions before a broader version
 
 1. Code/documentation license and contribution policy.
-2. Whether the Unix-first profile is acceptable or Windows must be in v0.1.
+2. Native Windows support and Linux verification for the remote helper.
 3. Whether 15-minute claims and one-hour live messages fit real harness turns.
 4. Which trusted adapter can prove a worker and its children stopped for recovery.
 5. Should projects require independent review, and who may resolve conflicting
@@ -60,8 +101,9 @@ decision. No license, release tag or global skill installation is implied.
 7. Should exact path ownership be enforced later? Current scope warnings and
    intentions are advisory, and overlapping source work requires coordination.
 8. Native idle wake-up and safe delivery without replacing a person's draft.
-9. Later: shared worktrees, cross-machine authentication, transport, replay
-   protection, Git synchronization, schema migration and capability negotiation.
+9. Per-participant server permissions, channel archival, automatic v0.1 migration
+   and capability negotiation. Signed identities are implemented in the separate
+   v0.3 secure profile.
 
 The trial should answer whether agents discover work, coordinate and recover
 without losing messages, before adding these larger features.

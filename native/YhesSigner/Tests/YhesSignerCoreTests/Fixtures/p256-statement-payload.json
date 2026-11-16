@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "id": "swift-vector-1",
+  "project": "demo",
+  "kind": "human.statement",
+  "author": "alice",
+  "key_id": "k_d7d81e4c7d2741c41372571a108b9ea094cdbb5e50712102211e4cbe48875606",
+  "session": null,
+  "issued_at": 2000000000,
+  "expires_at": 2000000300,
+  "audience": [
+    "alice",
+    "bob"
+  ],
+  "group": null,
+  "epoch": null,
+  "previous": null,
+  "body": {
+    "text": "Hyväksyn tämän täsmällisen viestin. 😀"
+  }
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+# agent-yhes command line. Runs the signed engine helper that ships inside
+# YhesSigner.app. Vault keys and the signer both check that helper's code
+# signature, so an unsigned build cannot open a profile; this launcher does
+# not fall back to one, and no environment variable selects another program.
+set -eu
+here=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+for helper in \
+    "$here/../native/YhesSigner/build/YhesSigner.app/Contents/Helpers/yhes" \
+    "/Applications/YhesSigner.app/Contents/Helpers/yhes"
+do
+    if [ -x "$helper" ]; then
+        exec "$helper" "$@"
+    fi
+done
+printf '%s\n' '{"ok":false,"error":{"code":"helper_missing","message":"the signed yhes helper inside YhesSigner.app was not found","hint":"Build the signed app with native/YhesSigner/scripts/build-app.sh --signed (the default build is an inert preview without the helper keys can use), or install the signed YhesSigner.app in /Applications. If --signed reports missing provisioning profiles, sign in to your Apple developer account in Xcode once; see docs/MACOS-SIGNER.md.","detail":null}}'
+exit 1

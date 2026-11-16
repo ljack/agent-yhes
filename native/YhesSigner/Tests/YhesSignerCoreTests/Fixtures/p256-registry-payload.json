@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "project": "demo",
+  "generation": 1,
+  "previous": null,
+  "issued_at": 2000000000,
+  "expires_at": 2000000600,
+  "participants": [
+    {
+      "id": "alice",
+      "kind": "human",
+      "controller": null,
+      "ghes": {
+        "instance": "ghes.example.com",
+        "user_id": 1001
+      }
+    },
+    {
+      "id": "alice-agent",
+      "kind": "agent",
+      "controller": "alice",
+      "ghes": null
+    }
+  ],
+  "keys": [
+    {
+      "key_id": "k_d7d81e4c7d2741c41372571a108b9ea094cdbb5e50712102211e4cbe48875606",
+      "participant": "alice",
+      "algorithm": "p256-sha256",
+      "public_key": "BGsX0fLhLEJH+Lzm5WOkQPJ3A32BLeszoPShOUXYmMKWT+NC4v4af5uO5+tKfA+eFivOM1drMV7Oy7ZAaDe/UfU=",
+      "not_before": 2000000000,
+      "not_after": 2000003600
+    }
+  ],
+  "revocations": []
+}
