@@ -1,12 +1,14 @@
 ---
 name: local-agent-tickets
-description: Discover, claim, renew, hand off and complete shared local project tickets using the local-agent-cooperation v0.1 protocol. Use for an opted-in project with .agents/tickets, not for unrelated issue trackers or automatic agent launching.
+description: Discover, claim, renew, hand off and complete shared project tickets through local files, a remote Git channel. Use for an opted-in agent-yhes project, including collaboration across computers and human review; not for unrelated issue trackers or automatic agent launching.
 ---
 
-# Shared local tickets
+# Shared project tickets
 
 Read [the specification](../../spec/v0.1.md), particularly ownership and trust.
-Use [the helper](../../tools/coop.py) from this complete toolkit. Resolve its
+For a remote channel also read [v0.2](../../spec/v0.2.md). Use
+[coop.py](../../tools/coop.py) for local v0.1 or
+[remote.py](../../tools/remote.py) for remote v0.2 from this complete toolkit. Resolve its
 absolute path; always pass the agreed target project's absolute `--root`.
 If the toolkit is incomplete, locate it before writing protocol state. Never
 reimplement a claim by manually editing JSON or deleting a lock file.
@@ -17,8 +19,10 @@ within the existing remit without making the user relay peer messages.
 
 ## Join and find work
 
-1. Read `tickets/protocol.json`; reject unsupported versions/profiles. Use `init`
-   only when setting up an authorized trial. Do not infer the root from Git.
+1. Select the user's agreed mode, project and, for remote mode, remote name and
+   channel. Local mode reads `.agents/tickets/protocol.json`. Remote commands
+   fetch and validate the descriptor from the coordination branch automatically.
+   Use `init` only to set up an authorized channel or local trial.
 2. Register with `session --label ROLE --harness NAME`. Retain the returned agent
    and session IDs. A restart uses a new session, `--agent OLD_AGENT` and
    `--resumes OLD_SESSION`; a resumed conversation does not inherit its claim.
@@ -35,12 +39,25 @@ All commands below are invoked as:
 python3 /absolute/toolkit/tools/coop.py --root /absolute/project COMMAND ...
 ```
 
+For remote mode replace `coop.py` with `remote.py`. The default remote is
+`origin`, branch `agent-yhes/state`; pass `--remote NAME --branch agent-yhes/NAME`
+before the command to change them. Results are under the response's `result`.
+Commands publish protocol changes to that remote, while source edits remain in
+the ordinary source checkout. Confirm that channel publication is within the
+user's remit before joining. Give human participants the
+[remote walkthrough](../../examples/REMOTE-WALKTHROUGH.md).
+
 ## Own and advance work
 
 Use `claim TICKET --session SESSION --revision N`. Keep the returned revision
 and lease token. If another claimant wins, reread and coordinate; do not keep
 retrying with newer revisions. Resolve reported scope overlaps before editing.
 Check that a blocked ticket's obstacle is resolved before claiming it.
+
+For remote work, wait for `delivery: confirmed`, then read `show TICKET` and
+verify that the lease is live and belongs to your session/token. A pending local
+intent or candidate commit does not own the task. Treat resolved/replayed
+operation results as history and refresh ownership before new side effects.
 
 At work boundaries, check inbox and ownership. Renew before expiry with
 `renew TICKET --session SESSION --revision N --token TOKEN`. Every renewal
@@ -68,6 +85,14 @@ requires a durable `note` explaining why. Do not mark unfinished work done.
 
 ## Interruption and recovery
 
+Remote commands save each mutation with an operation ID before network work.
+After a timeout or uncertain result, run `pending`, then `resolve o_UUID`.
+Use `resume o_UUID` to retry the original request. Do not issue a second logical
+operation with a new ID merely because a push acknowledgment was lost. A caller
+may preallocate `--operation-id o_UUID` before the subcommand for its own retries.
+Do not edit or merge the channel's JSON files by hand, force-push the channel,
+or move local unconfirmed state into source commits.
+
 Read existing state before repeating an operation with uncertain output. Ticket
 history distinguishes a committed transition from a failed one. Never replay
 external side effects just because a tool response was lost.
@@ -80,6 +105,12 @@ and its children stopped and reconciled partial writes. Include concrete
 insufficient. The helper records your assertion, not independent stop proof.
 If you cannot establish this, leave recovery pending and identify the missing
 evidence. Never remove `.lock` or forge ownership to make progress.
+
+In remote v0.2, `recover` requires a human participant's session. An agent must
+not register as a human to bypass it. On a new computer, register a new session
+with `--resumes OLD_SESSION`; the previous node's session cannot perform mutations
+from your new clone. When connectivity fails, stop starting shared side effects
+until you can refresh ownership.
 
 After recovery, reread and acquire a fresh claim. Checkpoints and fencing protect
 protocol records, not arbitrary editors; coordinate one source writer per path.

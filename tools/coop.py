@@ -11,9 +11,11 @@ import contextlib
 from datetime import datetime, timedelta, timezone
 import errno
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
+import pwd
 import re
 import sys
 import tempfile
@@ -34,6 +36,21 @@ class Invalid(Exception):
 
 class Conflict(Exception):
     pass
+
+
+def _team_pin_path(root):
+    # Match the signed CLI's canonical project binding. Only check presence;
+    # legacy tools never parse private configuration or open a secure vault.
+    home = Path(pwd.getpwuid(os.getuid()).pw_dir)
+    project_hash = hashlib.sha256(str(Path(root).resolve()).encode()).hexdigest()[:32]
+    return home / "Library/Application Support/agent-yhes/engine" / project_hash / "network/team.json"
+
+
+def reject_secure_channel(root):
+    secure = Path(root) / ".agents" / "messages" / "secure"
+    team = _team_pin_path(root)
+    if secure.exists() or secure.is_symlink() or team.exists() or team.is_symlink():
+        raise Invalid("this project has a secure channel; use bin/yhes instead of the legacy plaintext helper")
 
 
 def new_id(prefix):
@@ -108,12 +125,13 @@ def actor_check(value):
 def validate(obj, kind):
     """Validate core fields on disk; optional extensions are never executed."""
     try:
-        if not isinstance(obj, dict) or any(obj.get(k) != v for k, v in header(kind).items()):
+        if not isinstance(obj, dict) or obj.get("protocol") != PROTOCOL or obj.get("type") != kind or obj.get("version") not in {"0.1", "0.2"}:
             raise Invalid("unsupported protocol, version or record type")
         if kind == "project":
             check_id(obj["id"], "p")
             date(obj["created_at"])
-            if obj["locking"] != "unix-flock-v1":
+            expected_profile = "unix-flock-v1" if obj["version"] == "0.1" else "git-ref-v1"
+            if obj["locking"] != expected_profile:
                 raise Invalid("unsupported locking profile")
         elif kind == "session":
             check_id(obj["id"], "s")
@@ -123,6 +141,10 @@ def validate(obj, kind):
             date(obj["started_at"])
             if obj["resumes"] is not None:
                 check_id(obj["resumes"], "s")
+            if obj["version"] == "0.2":
+                check_id(obj["node"], "n")
+                if obj["participant_type"] not in {"human", "agent"}:
+                    raise Invalid("invalid participant type")
         elif kind == "ticket":
             check_id(obj["id"], "t")
             nonempty(obj["title"], "title")
@@ -216,12 +238,26 @@ def validate(obj, kind):
             date(obj["at"])
             if obj["stage"] not in {"seen", "handled"}:
                 raise Invalid("invalid receipt stage")
+        elif kind == "operation":
+            if obj["version"] != "0.2":
+                raise Invalid("operations require v0.2")
+            check_id(obj["id"], "o")
+            nonempty(obj["operation"], "operation")
+            date(obj["created_at"])
+            if not re.fullmatch(r"[0-9a-f]{64}", obj["arguments_hash"]) or not isinstance(obj["result"], dict):
+                raise Invalid("invalid operation receipt")
         return obj
     except (KeyError, TypeError, ValueError) as exc:
         raise Invalid(f"malformed {kind} record") from exc
 
 
 class Store:
+    version = "0.1"
+    profile = "unix-flock-v1"
+
+    def header(self, kind):
+        return {**header(kind), "version": self.version}
+
     def __init__(self, root):
         self.root = Path(root).resolve(strict=True)
         if not self.root.is_dir():
@@ -272,6 +308,8 @@ class Store:
             obj = json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
                              parse_constant=lambda _: (_ for _ in ()).throw(Invalid("nonfinite JSON number")))
             validate(obj, kind)
+            if obj["version"] != self.version:
+                raise Invalid("record belongs to another protocol version; use the matching helper")
             if kind in {"ticket", "session", "message"} and path.stem != obj["id"]:
                 raise Invalid("record ID does not match filename")
             return obj
@@ -310,12 +348,16 @@ class Store:
                 os.unlink(temporary)
 
     def execute(self, operation, **kwargs):
+        reject_secure_channel(self.root)
         operations = {"init", "session", "sessions", "create", "tickets", "show", "claim", "renew", "finish", "recover", "send", "inbox", "memory", "ack"}
         if operation not in operations:
             raise Invalid("unsupported operation")
         with self.locked(initialize=operation == "init", shared=operation in {"sessions", "tickets", "show", "inbox", "memory"}):
+            reject_secure_channel(self.root)
             if operation != "init":
-                self.read(self.tickets_dir / "protocol.json", "project")
+                project = self.read(self.tickets_dir / "protocol.json", "project")
+                if project["locking"] != self.profile:
+                    raise Invalid("wrong coordination profile")
             return getattr(self, "_" + operation)(**kwargs)
 
     def _init(self):
@@ -324,7 +366,7 @@ class Store:
             return self.read(path, "project")
         for folder in ("sessions", "memory", "live", "local/receipts"):
             self.safe(self.messages_dir / folder).mkdir(parents=True, exist_ok=True)
-        obj = {**header("project"), "id": new_id("p"), "locking": "unix-flock-v1", "created_at": stamp()}
+        obj = {**self.header("project"), "id": new_id("p"), "locking": self.profile, "created_at": stamp()}
         self.write(path, obj, immutable=True)
         return obj
 
@@ -341,7 +383,7 @@ class Store:
             agent = agent or previous["agent"]
             if agent != previous["agent"]:
                 raise Invalid("resumed session must belong to the same agent")
-        obj = {**header("session"), "id": new_id("s"), "agent": check_id(agent, "a") if agent else new_id("a"),
+        obj = {**self.header("session"), "id": new_id("s"), "agent": check_id(agent, "a") if agent else new_id("a"),
                "label": label, "harness": harness, "started_at": stamp(), "resumes": resumes}
         self.write(self.messages_dir / "sessions" / (obj["id"] + ".json"), obj, immutable=True)
         return obj
@@ -368,7 +410,7 @@ class Store:
                 raise Invalid("scope escapes project through symlink")
         for tid in depends_on or []:
             self.ticket(tid)
-        obj = {**header("ticket"), "id": new_id("t"), "revision": 1, "title": title, "body": body,
+        obj = {**self.header("ticket"), "id": new_id("t"), "revision": 1, "title": title, "body": body,
                "created_at": stamp(), "updated_at": stamp(), "created_by": actor, "status": "open",
                "scope": scope or [], "depends_on": depends_on or [], "generation": 0, "lease": None,
                "history": [], "result": None}
@@ -492,7 +534,7 @@ class Store:
         mid = check_id(id, "m") if id else new_id("m")
         existing = any(self.safe(self.messages_dir / folder / (mid + ".json")).exists() for folder in ("memory", "live"))
         created = self.message(mid)["created_at"] if existing else stamp()
-        obj = {**header("message"), "id": mid, "created_at": created, "from": actor, "to": to,
+        obj = {**self.header("message"), "id": mid, "created_at": created, "from": actor, "to": to,
                "kind": kind, "retention": "durable" if kind in DURABLE else "ephemeral",
                "expires_at": None if kind in DURABLE else stamp(date(created) + timedelta(seconds=seconds(ttl))),
                "ticket": ticket, "reply_to": reply_to, "supersedes": supersedes or [], "body": body}
@@ -584,7 +626,7 @@ class Store:
                 raise Invalid("receipt path/identity mismatch")
             if previous["stage"] == "handled" or previous["stage"] == stage:
                 return previous
-        obj = {**header("receipt"), "message": message, "session": session, "stage": stage, "at": stamp()}
+        obj = {**self.header("receipt"), "message": message, "session": session, "stage": stage, "at": stamp()}
         self.write(path, obj)
         return obj
 
@@ -598,8 +640,8 @@ def recipient(value):
     return {"kind": parts[0], "id": parts[1]}
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+def build_parser(description=__doc__):
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument("--root", required=True, help="explicit target project directory")
     commands = parser.add_subparsers(dest="operation", required=True)
     commands.add_parser("init")
@@ -655,6 +697,11 @@ def main():
     p.add_argument("--session", required=True)
     p.add_argument("--message", required=True)
     p.add_argument("--stage", choices=["seen", "handled"], required=True)
+    return parser, commands
+
+
+def main():
+    parser, _ = build_parser()
     args = vars(parser.parse_args())
     root, operation = args.pop("root"), args.pop("operation")
     try:

@@ -8,10 +8,12 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from coop import Conflict, Invalid, Store, new_id, now
+import coop
 
 
 def claimant(root, ticket, session, start, output):
@@ -38,6 +40,30 @@ def hold_lock(root, ready):
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_private_team_profile_also_blocks_plaintext_fallback(self):
+        with tempfile.TemporaryDirectory() as home, patch("coop.pwd.getpwuid", return_value=SimpleNamespace(pw_dir=home)):
+            pin = coop._team_pin_path(self.root)
+            pin.parent.mkdir(parents=True)
+            pin.write_text("presence only; never read as authority")
+            before = {str(p.relative_to(self.root)): p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
+            with self.assertRaisesRegex(Invalid, "secure channel"):
+                self.store.execute("send", session=self.a["id"], kind="note", to=[{"kind": "project"}], body="NO_PLAINTEXT_TEAM_FALLBACK")
+            with self.assertRaisesRegex(Invalid, "secure channel"):
+                Store(self.root).execute("init")
+            after = {str(p.relative_to(self.root)): p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
+            self.assertEqual(before, after)
+
+    def test_secure_channel_refuses_legacy_plaintext_before_writing(self):
+        secure = self.root / ".agents/messages/secure"
+        secure.mkdir()
+        before = {str(p.relative_to(self.root)): p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
+        with self.assertRaisesRegex(Invalid, "secure channel"):
+            self.store.execute("send", session=self.a["id"], kind="note", to=[{"kind": "project"}], body="MUST_NOT_BECOME_PLAINTEXT")
+        with self.assertRaisesRegex(Invalid, "secure channel"):
+            Store(self.root).execute("init")
+        after = {str(p.relative_to(self.root)): p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
+        self.assertEqual(before, after)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="coop-test-")
         self.addCleanup(self.temp.cleanup)

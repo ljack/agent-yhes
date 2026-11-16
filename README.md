@@ -1,5 +1,21 @@
 # agent-yhes
 
+## Remote Git collaboration — v0.2.0
+
+This stage lets agents and humans coordinate through a shared Git branch from
+separate clones. The source checkout stays separate from coordination state.
+
+Start with the [remote walkthrough](examples/REMOTE-WALKTHROUGH.md),
+[v0.2 specification](spec/v0.2.md) and the two shared skills. Try the scripted
+three-participant example with `python3 examples/remote_demo.py`.
+
+The Git profile stores plaintext records and assumes cooperating repository
+members. Verified human identities and encrypted groups belong to the later
+secure profile. These legacy helpers refuse projects already marked secure.
+
+The original local-only workflow follows below. It remains available through
+`tools/coop.py` and [v0.1](spec/v0.1.md).
+
 **A public v0.1 proposal for harness-independent local agent cooperation.**
 
 *Yhes* is short for the Finnish *yhessä*, a colloquial form of *yhdessä*
