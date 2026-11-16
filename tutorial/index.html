@@ -17,12 +17,23 @@
     <a class="wordmark" href="../README.md">agent-yhes <span> / explained</span></a>
     <div class="header-actions">
       <button id="theme-toggle" class="quiet-button" aria-label="Switch to dark theme">Dark</button>
-      <button id="start-toggle" class="outlined-button" aria-expanded="false" aria-controls="getting-started">Get started <span aria-hidden="true">↗</span></button>
+      <a id="start-toggle" class="outlined-button" href="#getting-started">Get started <span aria-hidden="true">↓</span></a>
     </div>
   </header>
   <main id="walkthrough">
     <section class="intro" aria-labelledby="page-title">
-      <div><h1 id="page-title">See how agents work together.</h1><p>Two people, their own tools, one shared conversation. Follow the flow, try a command, or click any object to see its job.</p></div>
+      <div>
+        <h1 id="page-title">See how agents work together.</h1>
+        <p>Two people, their own tools, one shared conversation. Follow the flow, try a command, or click any object to see its job.</p>
+      </div>
+      <div class="hero-prompt" role="region" aria-labelledby="hero-prompt-label">
+        <div class="hero-prompt-top">
+          <strong id="hero-prompt-label">Paste this into your agent / harness to get started</strong>
+          <button type="button" id="copy-hero-prompt" class="primary-button compact-button">Copy prompt</button>
+        </div>
+        <pre><code id="hero-bootstrap-prompt"></code></pre>
+        <p class="hero-prompt-meta">For Codex, Claude, Antigravity, Grok or Copilot · <a href="#getting-started">Setup &amp; two-Mac guide ↓</a> <span id="hero-copy-status" role="status"></span></p>
+      </div>
     </section>
     <nav class="chapters" aria-label="Walkthrough chapters" id="chapters"></nav>
 
@@ -107,12 +118,12 @@
       </section>
     </section>
 
-    <section id="getting-started" class="getting-started" hidden aria-labelledby="start-title">
-      <div class="section-heading"><div><h2 id="start-title">Run it locally.</h2><p>Choose the single-Mac two-agent simulation or the two-Mac native pilot.</p></div><button class="quiet-button" id="start-close">Back to walkthrough</button></div>
+    <section id="getting-started" class="getting-started" aria-labelledby="start-title">
+      <div class="section-heading"><div><h2 id="start-title">Run it locally.</h2><p>Choose the single-Mac two-agent simulation or the two-Mac native pilot.</p></div><a class="quiet-button" id="start-close" href="#chapters">Back to walkthrough ↑</a></div>
       <div class="guide-options" role="group" aria-label="Getting started environment"><button class="outlined-button selected" data-guide="simulation" aria-pressed="true">Two users on one Mac</button><button class="outlined-button" data-guide="real" aria-pressed="false">Two people, two Macs</button></div>
       <div id="simulation-guide">
         <ol class="setup-steps"><li><strong>Prepare two project folders.</strong><span>Use the repo’s <a href="../BOOTSTRAP.md#prepare-a-pair-once">bootstrap guide</a> to prepare Alice, Bob and the local Git/NATS lab.</span></li><li><strong>Open an agent in each project.</strong><span>Paste the same short prompt below. Each agent keeps its own role and state.</span></li><li><strong>Let the agents complete the exchange.</strong><span>Check matching membership, verified authors, the broker wake-up and saved history.</span></li></ol>
-        <div class="copy-prompt"><pre><code id="bootstrap-prompt"></code></pre><button id="copy-prompt" class="primary-button">Copy prompt</button></div>
+        <div class="copy-prompt"><p class="copy-prompt-label">Paste this into your agent / harness in each of the two project folders:</p><pre><code id="bootstrap-prompt"></code></pre><button type="button" id="copy-prompt" class="primary-button">Copy prompt</button></div>
         <p class="guide-note">Uses disposable software keys in separate directories so two agents can exercise the full Git and NATS flow on one Mac.</p>
       </div>
       <div id="real-guide" hidden>

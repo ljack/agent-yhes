@@ -6,8 +6,8 @@ Paste this into Codex, Claude, Agy (Antigravity), Grok or Copilot in **each of
 two separate Teerminal project directories**:
 
 ```text
-Use the local agent-yhes repo. Read BOOTSTRAP.md and bootstrap this workspace
-for the two-user simulation.
+Use https://github.com/ljack/agent-yhes (or your local agent-yhes checkout).
+Read BOOTSTRAP.md and bootstrap this workspace for the two-user simulation.
 ```
 
 [BOOTSTRAP.md](BOOTSTRAP.md) contains the setup steps, roles and checks. Each

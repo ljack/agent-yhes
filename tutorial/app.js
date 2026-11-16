@@ -272,40 +272,29 @@
   const narrow = window.matchMedia('(max-width: 780px)');
   let storyVisible = true, startVisible = false;
   function mobileControls() {
-    const hide = !narrow.matches || storyVisible || (!$('getting-started').hidden && startVisible);
+    const hide = !narrow.matches || storyVisible || startVisible;
     $('mobile-playback').hidden = hide;
     document.body.classList.toggle('has-mobile-bar', !hide);
   }
-  function showStart(show) {
-    stop(); render(); closeInspector();
-    $('getting-started').hidden = !show;
-    $('start-toggle').setAttribute('aria-expanded', String(show));
-    if (!show) startVisible = false;
-    mobileControls();
-    if (show) {
-      $('getting-started').scrollIntoView({ behavior: reduceQuery.matches ? 'instant' : 'smooth', block: 'start' });
-      const sr = $('getting-started').getBoundingClientRect();
-      if (sr.top < window.innerHeight && sr.bottom > 0) { startVisible = true; mobileControls(); }
-    } else {
-      $('start-toggle').focus();
-    }
-  }
-  $('start-toggle').addEventListener('click', () => showStart($('getting-started').hidden));
-  $('start-close').addEventListener('click', () => showStart(false));
   document.querySelectorAll('[data-guide]').forEach(button => button.addEventListener('click', () => {
     const real = button.dataset.guide === 'real';
     $('simulation-guide').hidden = real; $('real-guide').hidden = !real;
     document.querySelectorAll('[data-guide]').forEach(b => { const active = b === button; b.classList.toggle('selected', active); b.setAttribute('aria-pressed', String(active)); });
   }));
-  $('bootstrap-prompt').textContent = M.bootstrap;
-  $('copy-prompt').addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(M.bootstrap); $('copy-status').textContent = 'Copied. Paste it in each prepared project’s agent session.'; }
-    catch {
-      const range = document.createRange(); range.selectNodeContents($('bootstrap-prompt'));
+  async function copyBootstrap(codeEl, statusEl) {
+    try {
+      await navigator.clipboard.writeText(M.bootstrap);
+      statusEl.textContent = 'Copied. Paste it into your agent or harness.';
+    } catch {
+      const range = document.createRange(); range.selectNodeContents(codeEl);
       const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
-      $('copy-status').textContent = 'The prompt is selected. Copy it with your usual keyboard shortcut.';
+      statusEl.textContent = 'Selected. Copy it with your usual keyboard shortcut.';
     }
-  });
+  }
+  $('hero-bootstrap-prompt').textContent = M.bootstrap;
+  $('bootstrap-prompt').textContent = M.bootstrap;
+  $('copy-hero-prompt').addEventListener('click', () => copyBootstrap($('hero-bootstrap-prompt'), $('hero-copy-status')));
+  $('copy-prompt').addEventListener('click', () => copyBootstrap($('bootstrap-prompt'), $('copy-status')));
 
   const NS = 'http://www.w3.org/2000/svg';
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -462,7 +451,7 @@
   }
   new ResizeObserver(() => drawWires()).observe($('world'));
   new IntersectionObserver(entries => { storyVisible = entries[0].isIntersecting; mobileControls(); }, { threshold: 0 }).observe(document.querySelector('.story'));
-  new IntersectionObserver(entries => { startVisible = entries[0].isIntersecting; mobileControls(); }, { threshold: 0 }).observe($('getting-started'));
+  new IntersectionObserver(entries => { startVisible = entries[0].isIntersecting; mobileControls(); }, { rootMargin: '0px 0px -35% 0px', threshold: 0 }).observe($('getting-started'));
   narrow.addEventListener('change', () => { mobileControls(); drawWires(); });
   reduceQuery.addEventListener('change', () => drawWires());
   window.addEventListener('pagehide', stop);

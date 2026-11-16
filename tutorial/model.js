@@ -4,7 +4,7 @@
   else root.YhesTutorial = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
-  const bootstrap = 'Use the local agent-yhes repo. Read BOOTSTRAP.md and bootstrap this workspace for the two-user simulation.';
+  const bootstrap = 'Use https://github.com/ljack/agent-yhes (or your local agent-yhes checkout). Read BOOTSTRAP.md and bootstrap this workspace for the two-user simulation.';
   const names = { alice: 'Alice', bob: 'Bob' };
   const other = side => side === 'alice' ? 'bob' : 'alice';
   const node = (side, kind) => `${side}-${kind}`;

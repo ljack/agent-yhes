@@ -228,7 +228,7 @@ On desktop, the nonmodal inspector docks inline between narration and the diagra
 
 ### Getting started
 
-An explicit reveal control opens setup. Two outlined options choose simulation or two-person instructions, with a fragment-preserving link to `BOOTSTRAP.md#prepare-a-pair-once` and an expandable shortcut-to-CLI reference table (`details.cli-map`). Ordered steps remain plain content. A tonal monospace block holds the copyable prompt; clipboard failure selects the prompt for manual copying and announces the fallback.
+The copyable startup prompt (`Paste this into your agent / harness to get started`) sits directly in the hero beside the headline, and the `#getting-started` section remains visible below the diagram with anchor navigation (`Get started ↓` / `Back to walkthrough ↑`). Two outlined options choose simulation or two-person instructions, with a fragment-preserving link to `BOOTSTRAP.md#prepare-a-pair-once` and an expandable shortcut-to-CLI reference table (`details.cli-map`). Ordered steps remain plain content. A tonal monospace block holds the copyable prompt; clipboard failure selects the prompt for manual copying and announces the fallback.
 
 ## Do's and Don'ts
 
